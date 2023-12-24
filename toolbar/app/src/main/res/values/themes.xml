@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Toolbar" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+    <style name="Base.Theme.mytheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">#48AAD6</item>
+         <item name="colorPrimaryDark">#27769A</item>
+         <item name="colorAccent">#1B4355</item>
+    </style>
+
+    <style name="Theme.Toolbar" parent="Base.Theme.Toolbar" />
+</resources>

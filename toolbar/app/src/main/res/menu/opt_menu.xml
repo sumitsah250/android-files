@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/opt_new"
+        android:icon="@drawable/baseline_create_new_folder_24"
+       app:showAsAction="ifRoom"
+        android:title="New"  />
+    <item
+        android:id="@+id/opt_open"
+        android:title="Open"
+        android:icon="@drawable/baseline_file_open_24"
+        app:showAsAction="collapseActionView"
+        />
+    <item
+        android:id="@+id/opt_save"
+        android:title="Open"
+        android:icon="@drawable/baseline_save_24"
+        app:showAsAction="collapseActionView"
+        />
+
+</menu>
