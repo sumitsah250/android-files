@@ -1,5 +1,4 @@
 package com.example.recyclerview;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,7 +17,6 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
     ArrayList<ContactModel> arrcontacts = new ArrayList<>();
     FloatingActionButton btnOpenDialog;
@@ -68,13 +66,14 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 //        RecycleCO adapter1 =new RecycleCO(MainActivity.this, arrcontacts);
 //        recyclerView.setAdapter(adapter1);
-        recyclerView.setOnContextClickListener(new View.OnContextClickListener() {
-            @Override
-            public boolean onContextClick(View v) {
-                Toast.makeText(MainActivity.this, "this was called", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
+
+//        recyclerView.setOnContextClickListener(new View.OnContextClickListener() {
+//            @Override
+//            public boolean onContextClick(View v) {
+//                Toast.makeText(MainActivity.this, "this was called", Toast.LENGTH_SHORT).show();
+//                return false;
+//            }
+//        });
         btnOpenDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             Toast.makeText(MainActivity.this, "please enter contact number", Toast.LENGTH_SHORT).show();
                         }
+
                         arrcontacts.add(new ContactModel(R.drawable.a,name, number));
                         adapter.notifyItemInserted(arrcontacts.size()-1);
                         recyclerView.scrollToPosition(arrcontacts.size()-1);

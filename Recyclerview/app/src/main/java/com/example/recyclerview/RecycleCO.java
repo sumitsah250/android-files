@@ -27,7 +27,6 @@ public class RecycleCO extends RecyclerView.Adapter<RecycleCO.ViewHolder>{
         ViewHolder viewHolder=new ViewHolder(view);
         return viewHolder;
     }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.img.setImageResource(arrContacts.get(position).img);

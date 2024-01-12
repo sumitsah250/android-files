@@ -94,14 +94,11 @@ public class RecyclerContactAdapter extends RecyclerView.Adapter<RecyclerContact
                             public void onClick(DialogInterface dialog, int which) {
                                 arrContacts.remove(position);
                                 notifyItemRemoved( position);
-
                             }
                         })
                         .setNegativeButton("no", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
-
                             }
                         });
                 builder.show();

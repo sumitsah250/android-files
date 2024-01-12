@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#03A9F4"
+    android:layout_gravity="center"
+    android:layout_margin="11dp"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23dp"
+        android:text="create user id:"
+        android:layout_margin="11dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="create unique user id"
+        android:id="@+id/D_userid"
+        android:ems="24"
+        android:inputType="text"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23dp"
+        android:text="enter new  password"
+        android:layout_margin="11dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="create unique user id"
+        android:id="@+id/D_userpassword"
+        android:ems="24"
+        android:inputType="text"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23dp"
+        android:text="Conform password"
+        android:layout_margin="11dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="create unique user id"
+        android:id="@+id/D_userpassword1"
+        android:ems="24"
+        android:inputType="text"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="119dp"
+        android:text="create"
+        android:id="@+id/btncreate"
+        android:textSize="33dp" />
+
+
+</LinearLayout>

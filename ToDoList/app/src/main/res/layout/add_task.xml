@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="278dp"
+    android:orientation="vertical"
+    android:background="#2196F3"
+    android:gravity="center"
+    android:padding="15dp"
+    android:layout_margin="15dp"
+    android:layout_height="wrap_content"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="what is to be done ?"
+        android:textSize="36dp"
+        android:id="@+id/txtadd"
+        android:textStyle="bold"
+    />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="enter the task"
+        android:ems="44"
+        android:id="@+id/edttask"
+        android:inputType="text"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:hint="enter date"
+        android:id="@+id/edtdate"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:hint="enter time"
+        android:id="@+id/edttime"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD"
+        android:id="@+id/btnAction"
+        />
+
+
+</LinearLayout>
