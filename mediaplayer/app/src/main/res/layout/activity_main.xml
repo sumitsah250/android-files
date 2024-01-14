@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+  <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="play"
+      android:textSize="22dp"
+      android:layout_margin="11dp"
+      android:id="@+id/btnplay"
+      />
+    <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="pause"
+      android:textSize="22dp"
+      android:layout_margin="11dp"
+      android:id="@+id/btnpause"
+      />
+    <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="stop"
+      android:textSize="22dp"
+      android:layout_margin="11dp"
+      android:id="@+id/btnstop"
+      />
+
+</LinearLayout>

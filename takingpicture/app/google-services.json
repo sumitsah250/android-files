@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "573640737690",
+    "project_id": "sumit-7aa62",
+    "storage_bucket": "sumit-7aa62.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573640737690:android:d9a3e325cada241b723023",
+        "android_client_info": {
+          "package_name": "com.example.takingpicture"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHoQkyrIrlAsMTEc57fdQqMw18WdoECj4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

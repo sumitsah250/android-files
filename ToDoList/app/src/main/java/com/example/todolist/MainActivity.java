@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         floating = findViewById(R.id.floating);
+
+        MyDatabaseHelper db = new MyDatabaseHelper(this);
+        db.addBook("sumit","aaditya","bidur");
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         task.add(new taskModel("my first task","2080/09/12","2:00"));
