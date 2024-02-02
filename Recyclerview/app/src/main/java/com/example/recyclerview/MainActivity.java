@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         RecyclerView recyclerView =findViewById(R.id.recyclerContact);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         btnOpenDialog=findViewById(R.id.btnOpenDialog);
         arrcontacts.add(new ContactModel(R.drawable.aashis,"Aashis","9816879933"));

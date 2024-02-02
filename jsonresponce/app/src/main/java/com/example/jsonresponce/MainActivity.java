@@ -28,13 +28,13 @@ public class MainActivity extends AppCompatActivity {
         String url = "https://dummyjson.com/products";
         AndroidNetworking.initialize(getApplicationContext());
         AndroidNetworking.get(url)
+//                .addPathParameter()
                 .setPriority(Priority.HIGH)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
                         Log.d("RES",jsonObject.toString());
-
                         try {
                             for(int i=0;i<10;i++) {
                                 JSONArray arr =jsonObject.getJSONArray("products");
@@ -45,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
                                 ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1,arrNames);
                                 listView.setAdapter(adapter);
                             }
+//                            JSONObject jasonresult = jsonObject.getJSONObject("current");
+//                            int s = jsonObject.getInt("temp_c");
+
+
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }

@@ -69,13 +69,13 @@ public class mydbhelper1 extends SQLiteOpenHelper {
     public void UpdateContect(Contactmodel contactmodel){
         SQLiteDatabase db =this.getWritableDatabase();
         ContentValues cv = new ContentValues();
+        Toast.makeText(context, ""+contactmodel.id, Toast.LENGTH_SHORT).show();
         cv.put(KEY_NAME,contactmodel.name);
         db.update(TABLE_CONTACT,cv,KEY_ID + " = " + contactmodel.id,null);
+//        db.update(TABLE_CONTACT,cv,KEY_ID + " = ?" ,new String[]{String.valueOf(contactmodel.id)});
     }
     public void DeleteContact(Contactmodel contactmodel){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_CONTACT,KEY_ID+" = ?",new String[]{String.valueOf(contactmodel.id)});
-
-
     }
 }

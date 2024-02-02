@@ -19,6 +19,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -82,6 +84,12 @@ public class RecyclerContactAdapter extends RecyclerView.Adapter<RecyclerContact
                 dialog.show();
             }
         });
+        holder.btndialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         holder.llRow.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -116,12 +124,14 @@ public class RecyclerContactAdapter extends RecyclerView.Adapter<RecyclerContact
         TextView txtName,txtNumber;
         ImageView imgContact;
         LinearLayout llRow;
+        FloatingActionButton btndialog;
         public ViewHolder( View itemView){
             super(itemView);
             txtName=itemView.findViewById(R.id.txtname);
             txtNumber=itemView.findViewById(R.id.txtcontact);
             imgContact = itemView.findViewById(R.id.imgcontact);
             llRow=itemView.findViewById(R.id.llRow);
+            btndialog=itemView.findViewById(R.id.btnOpenDialog);
         }
 
     }

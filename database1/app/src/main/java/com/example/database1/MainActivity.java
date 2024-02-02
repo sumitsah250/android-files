@@ -15,22 +15,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Contactmodel contactmodel = new Contactmodel();
-        contactmodel.name="000000";
-        contactmodel.id=2;
-        contactmodel.number="0000";
-        mydbhelper1 dbHelper;
         ListView listview;
         listview= findViewById(R.id.listview);
+
+
+        Contactmodel contactmodel = new Contactmodel();
+        contactmodel.name="5555555";
+        contactmodel.id=4;
+        contactmodel.number="555555";
+
+        mydbhelper1 dbHelper;
         dbHelper= new mydbhelper1(this);
-        String s = "sumit";
-        String p ="aaditya";
-        dbHelper.addContacts(s,p);
-        dbHelper.addContacts("aaditya","3560");
-        dbHelper.addContacts("bidur","98041225");
-        dbHelper.addContacts("bdur","980961259");
+
+//        dbHelper.addContacts("aaditya","3560");
+//        dbHelper.addContacts("bidur","98041225");
+//        dbHelper.addContacts("bdur","980961259");
         dbHelper.UpdateContect(contactmodel);
-        dbHelper.DeleteContact(contactmodel);
+//        dbHelper.DeleteContact(contactmodel);
 
          ArrayList<Contactmodel> arrcontacts = dbHelper.getcontect();
          ArrayList<String> arrnames = new ArrayList<>();
