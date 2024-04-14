@@ -50,6 +50,7 @@ public class RecyclerContactAdapter extends RecyclerView.Adapter<RecyclerContact
         setAnimation(holder.itemView,position);
         holder.llRow.setOnClickListener(new View.OnClickListener()
         {
+
             @Override
             public void onClick(View v) {
                 Dialog dialog = new Dialog(context );
