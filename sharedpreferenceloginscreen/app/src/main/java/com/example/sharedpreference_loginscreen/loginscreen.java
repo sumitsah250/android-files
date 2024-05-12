@@ -36,6 +36,7 @@ public class loginscreen extends AppCompatActivity {
         SharedPreferences.Editor editor = pref.edit();
         Intent iHome = new Intent(loginscreen.this,homescreen.class);
 
+
 //
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override

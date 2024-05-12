@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         }else if(itemId == R.id.opt_open){
             Toast.makeText(this, "new file opened", Toast.LENGTH_SHORT).show();
         }else if(itemId==android.R.id.home){
+            Toast.makeText(this, "go back", Toast.LENGTH_SHORT).show();
             super.getOnBackPressedDispatcher();
         }
         return super.onOptionsItemSelected(item);

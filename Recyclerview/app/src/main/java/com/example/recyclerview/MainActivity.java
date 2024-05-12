@@ -20,17 +20,14 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     ArrayList<ContactModel> arrcontacts = new ArrayList<>();
     FloatingActionButton btnOpenDialog;
-    RecyclerContactAdapter adapter;
     Context context;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         RecyclerView recyclerView =findViewById(R.id.recyclerContact);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         btnOpenDialog=findViewById(R.id.btnOpenDialog);
         arrcontacts.add(new ContactModel(R.drawable.aashis,"Aashis","9816879933"));
         arrcontacts.add(new ContactModel(R.drawable.b,"Sumit","980986123"));
@@ -44,29 +41,31 @@ public class MainActivity extends AppCompatActivity {
         arrcontacts.add(new ContactModel(R.drawable.a,"J","980986123"));
         arrcontacts.add(new ContactModel(R.drawable.a,"K","98098612"));
         arrcontacts.add(new ContactModel(R.drawable.a,"L","9809861"));
-        arrcontacts.add(new ContactModel(R.drawable.a,"M","9809861235"));
-        arrcontacts.add(new ContactModel(R.drawable.a,"N","980986123"));
-        arrcontacts.add(new ContactModel(R.drawable.a,"O","98098612"));
-        arrcontacts.add(new ContactModel(R.drawable.a,"P","9809861"));
-        arrcontacts.add(new ContactModel(R.drawable.b,"Sumit","980986123"));
-        arrcontacts.add(new ContactModel(R.drawable.c,"Bidur","98098612"));
-        arrcontacts.add(new ContactModel(R.drawable.d,"D","9809861"));
-        arrcontacts.add(new ContactModel(R.drawable.a,"E","9809861235"));
-        arrcontacts.add(new ContactModel(R.drawable.b,"F","980986123"));
-        arrcontacts.add(new ContactModel(R.drawable.d,"G","98098612"));
-        arrcontacts.add(new ContactModel(R.drawable.c,"H","9809861"));
-        arrcontacts.add(new ContactModel(R.drawable.d,"I","9809861235"));
-        arrcontacts.add(new ContactModel(R.drawable.a,"J","980986123"));
-        arrcontacts.add(new ContactModel(R.drawable.a,"K","98098612"));
-        arrcontacts.add(new ContactModel(R.drawable.a,"L","9809861"));
-        arrcontacts.add(new ContactModel(R.drawable.a,"M","9809861235"));
-        arrcontacts.add(new ContactModel(R.drawable.a,"N","980986123"));
-        arrcontacts.add(new ContactModel(R.drawable.a,"O","98098612"));
-        arrcontacts.add(new ContactModel(R.drawable.a,"P","9809861"));
-        RecyclerContactAdapter adapter = new RecyclerContactAdapter(MainActivity.this,arrcontacts);
-        recyclerView.setAdapter(adapter);
-//        RecycleCO adapter1 =new RecycleCO(MainActivity.this, arrcontacts);
-//        recyclerView.setAdapter(adapter1);
+//        arrcontacts.add(new ContactModel(R.drawable.a,"M","9809861235"));
+//        arrcontacts.add(new ContactModel(R.drawable.a,"N","980986123"));
+//        arrcontacts.add(new ContactModel(R.drawable.a,"O","98098612"));
+//        arrcontacts.add(new ContactModel(R.drawable.a,"P","9809861"));
+//        arrcontacts.add(new ContactModel(R.drawable.b,"Sumit","980986123"));
+//        arrcontacts.add(new ContactModel(R.drawable.c,"Bidur","98098612"));
+//        arrcontacts.add(new ContactModel(R.drawable.d,"D","9809861"));
+//        arrcontacts.add(new ContactModel(R.drawable.a,"E","9809861235"));
+//        arrcontacts.add(new ContactModel(R.drawable.b,"F","980986123"));
+//        arrcontacts.add(new ContactModel(R.drawable.d,"G","98098612"));
+//        arrcontacts.add(new ContactModel(R.drawable.c,"H","9809861"));
+//        arrcontacts.add(new ContactModel(R.drawable.d,"I","9809861235"));
+//        arrcontacts.add(new ContactModel(R.drawable.a,"J","980986123"));
+//        arrcontacts.add(new ContactModel(R.drawable.a,"K","98098612"));
+//        arrcontacts.add(new ContactModel(R.drawable.a,"L","9809861"));
+//        arrcontacts.add(new ContactModel(R.drawable.a,"M","9809861235"));
+//        arrcontacts.add(new ContactModel(R.drawable.a,"N","980986123"));
+//        arrcontacts.add(new ContactModel(R.drawable.a,"O","98098612"));
+//        arrcontacts.add(new ContactModel(R.drawable.a,"P","9809861"));
+
+//        RecyclerContactAdapter adapter = new RecyclerContactAdapter(MainActivity.this,arrcontacts);
+//        recyclerView.setAdapter(adapter);
+
+        RecycleCO adapter1 =new RecycleCO(MainActivity.this, arrcontacts);
+        recyclerView.setAdapter(adapter1);
 
 //        recyclerView.setOnContextClickListener(new View.OnContextClickListener() {
 //            @Override
@@ -99,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         arrcontacts.add(new ContactModel(R.drawable.a,name, number));
-                        adapter.notifyItemInserted(arrcontacts.size()-1);
+                        adapter1.notifyItemInserted(arrcontacts.size()-1);
                         recyclerView.scrollToPosition(arrcontacts.size()-1);
                         dialog.dismiss();
                     }

@@ -27,18 +27,18 @@
             android:src="@color/Black_shade"
             android:id="@+id/idIVBack"
             />
+
         <TextView
             android:id="@+id/idTVCityName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:padding="20dp"
             android:text="City Name"
             android:textAlignment="center"
-            android:gravity="center"
             android:textColor="#fff"
-            android:layout_marginTop="30dp"
-            android:padding="20dp"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
