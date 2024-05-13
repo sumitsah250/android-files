@@ -43,6 +43,7 @@ public class RecycleCO extends RecyclerView.Adapter<RecycleCO.ViewHolder>{
         ImageView img;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
             txtName=itemView.findViewById(R.id.txtname);
             txtNumber=itemView.findViewById(R.id.txtcontact);
             img=itemView.findViewById(R.id.imgcontact);
