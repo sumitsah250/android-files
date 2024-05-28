@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import io.realm.RealmObject;
 
-public class student extends RealmObject {
+public class Student extends RealmObject {
     private String name;
     private int age;
 
@@ -24,10 +24,10 @@ public class student extends RealmObject {
         this.age = age;
     }
 
-    public student() {
+    public Student() {
     }
 
-    public student(String name, int age) {
+    public Student(String name, int age) {
         this.name = name;
         this.age = age;
     }
@@ -35,7 +35,7 @@ public class student extends RealmObject {
     @NonNull
     @Override
     public String toString() {
-        return "student{" +
+        return "Student{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';
