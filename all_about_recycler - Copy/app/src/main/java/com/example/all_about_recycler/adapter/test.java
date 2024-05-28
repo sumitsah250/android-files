@@ -20,12 +20,18 @@ import com.example.all_about_recycler.R;
 import com.example.all_about_recycler.databinding.AddRowBinding;
 import com.example.all_about_recycler.databinding.RowBinding;
 import com.example.all_about_recycler.fruitdetails;
+import com.example.all_about_recycler.realm.realmObject;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import io.realm.Realm;
 
 public class test extends RecyclerView.Adapter<test.ViewHolder> {
     Context context;
+    private  Realm realm,realm1;
     ArrayList<fruitdetails> arrayList = new ArrayList<>();
 
     public test(Context context, ArrayList<fruitdetails> arrayList) {
@@ -42,9 +48,19 @@ public class test extends RecyclerView.Adapter<test.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull test.ViewHolder holder, int position) {
-        holder.binding.rowImage.setImageResource(arrayList.get(position).getImage());
-        holder.binding.rowTitle.setText(arrayList.get(position).getTitle());
-        holder.binding.rowDetails.setText(arrayList.get(position).getDetails());
+
+        realm1 = Realm.getDefaultInstance();
+
+        List<realmObject> dataModals;
+        dataModals = new ArrayList<>();
+
+        realm= Realm.getDefaultInstance();
+        dataModals = realm.where(realmObject.class).findAll();
+
+
+        holder.binding.rowImage.setImageResource(R.drawable.ic_android_black_24dp);
+        holder.binding.rowTitle.setText(dataModals.get(position).getName());
+        holder.binding.rowDetails.setText(dataModals.get(position).getDescription());
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
@@ -104,18 +120,12 @@ public class test extends RecyclerView.Adapter<test.ViewHolder> {
                     public void onClick(View v) {
                         arrayList.add(new fruitdetails(R.drawable.ic_launcher_background,edttitle.getText().toString(),edtdiscription.getText().toString()));
                         notifyItemChanged(position);
+                        add_to_data_base(edttitle.getText().toString(),edtdiscription.getText().toString());
                         dialog.dismiss();
-
                     }
                 });
 
                 dialog.show();
-
-
-
-
-
-
 
 
                 return false;
@@ -140,5 +150,16 @@ public class test extends RecyclerView.Adapter<test.ViewHolder> {
             binding =  RowBinding.bind(itemView);
 
         }
+    }
+    private void add_to_data_base(String title, String description){
+        realmObject data = new realmObject();
+        data.setId(new Date().getTime());
+        data.setName(title);
+        data.setDescription(description);
+        realm.beginTransaction();
+        realm.copyToRealm(data);
+        realm.commitTransaction();
+        Toast.makeText(context, "saved", Toast.LENGTH_SHORT).show();
+
     }
 }
