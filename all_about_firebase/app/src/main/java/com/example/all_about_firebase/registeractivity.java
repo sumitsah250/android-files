@@ -19,11 +19,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class registeractivity extends AppCompatActivity {
     EditText edtregemail,edtregpassword;
     Button btnregister;
     private FirebaseAuth auth;
+    private FirebaseDatabase database=FirebaseDatabase.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +64,20 @@ public class registeractivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+
+                    myUser myUser = new myUser(textEmail,textPassword);
+                    String id = task.getResult().getUser().getUid();
+                    try {
+                        database.getReference().child("users").child(id).setValue(myUser);
+                    }catch (Exception e){
+                        Toast.makeText(registeractivity.this, ""+e, Toast.LENGTH_SHORT).show();
+                    }
                     Toast.makeText(registeractivity.this, "user register successfully", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(registeractivity.this,tinku.class));
                     finish();
                 }else{
                     Toast.makeText(registeractivity.this, "failed to register the user", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 

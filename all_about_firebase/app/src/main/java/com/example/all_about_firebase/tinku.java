@@ -50,6 +50,7 @@ public class tinku extends AppCompatActivity {
         HashMap<String,Object> map = new HashMap<>();
         map.put("Name","sumit");
         map.put("email","sumit@gmail.com");
+
         FirebaseDatabase.getInstance().getReference().child("programming knowledge").updateChildren(map);
         FirebaseDatabase.getInstance().getReference().child("programming knowledge").child("multiple values").updateChildren(map);
         FirebaseDatabase.getInstance().getReference().child("programming knowledge").child("multiple values").push().updateChildren(map); //push will create a unique id
@@ -57,12 +58,15 @@ public class tinku extends AppCompatActivity {
         ArrayList<String> list = new ArrayList<>();
         ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);
         listView.setAdapter(adapter);
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Languages");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot snapshot1 : snapshot.getChildren()){
-                    list.add(snapshot1.getValue().toString());
+                    myUser= snapshot1.getValue(myUser.class);
+                    String info = myUser.getEmail()+" : "+ myUser.getPassword();
+                    list.add(info);
+//                    list.add(snapshot1.getValue().toString());
                 }
                 adapter.notifyDataSetChanged();
             }

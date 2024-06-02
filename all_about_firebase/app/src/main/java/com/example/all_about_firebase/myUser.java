@@ -7,7 +7,6 @@ public class myUser {
         this.email = email;
         this.password = password;
     }
-
     public myUser() {
     }
 

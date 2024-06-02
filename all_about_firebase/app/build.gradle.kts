@@ -1,7 +1,10 @@
+import java.util.regex.Pattern.compile
+
 plugins {
     alias(libs.plugins.androidApplication)
     id("com.google.gms.google-services")
 }
+
 
 android {
     namespace = "com.example.all_about_firebase"
@@ -25,6 +28,7 @@ android {
                 "proguard-rules.pro"
             )
         }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -40,7 +44,17 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
+    implementation(libs.firebase.ml.vision)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    //
+    implementation ("com.google.mlkit:face-detection:16.1.6")
+    implementation ("com.google.android.gms:play-services-mlkit-face-detection:17.1.0")
+    compile("com.github.sujithkanna:smileyrating:2.0.0")
+    implementation("com.github.sujithkanna:smileyrating:2.0.0")
+    implementation("org.greenrobot:eventbus:3.3.1")
+    ///
+
 }
