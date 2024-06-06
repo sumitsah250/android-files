@@ -37,6 +37,7 @@ public class registeractivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         edtregemail=findViewById(R.id.edtregemail);
         edtregpassword=findViewById(R.id.edtregpassword);
         btnregister=findViewById(R.id.ButtonRegister);
@@ -64,7 +65,6 @@ public class registeractivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-
                     myUser myUser = new myUser(textEmail,textPassword);
                     String id = task.getResult().getUser().getUid();
                     try {

@@ -43,6 +43,8 @@ public class tinku extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
         listView= findViewById(R.id.listview);
 
         FirebaseDatabase.getInstance().getReference().child("programming knowledge").child("android").setValue("abcd");
