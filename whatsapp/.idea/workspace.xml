@@ -10,83 +10,107 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5230eaf4-f456-4200-bf3b-f94baf67027e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../ToDoList/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/.idea/deploymentTargetDropDown.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/.idea/kotlinc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/androidTest/java/com/example/todolist/ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/java/com/example/todolist/MainActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/java/com/example/todolist/MyDatabaseHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/java/com/example/todolist/RecyclerAdapter1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/java/com/example/todolist/RecyclerAdapter2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/java/com/example/todolist/splash2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/java/com/example/todolist/taskModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/java/com/example/todolist/test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/java/com/example/todolist/ui/theme/Color.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/java/com/example/todolist/ui/theme/Theme.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/java/com/example/todolist/ui/theme/Type.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/anim/alpha.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/drawable/baseline_add_24.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/drawable/baseline_cloud_done_24.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/drawable/ic_launcher_foreground.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/layout/activity_splash2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/layout/activity_test.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/layout/add_task.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/layout/row.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/mipmap-hdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/mipmap-mdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/values-night/themes.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/values/themes.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/xml/backup_rules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/main/res/xml/data_extraction_rules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/app/src/test/java/com/example/todolist/ExampleUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ToDoList/settings.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../customnotification/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../customnotification/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../customnotification/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../customnotification/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../database1/app/src/main/java/com/example/database1/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../database1/app/src/main/java/com/example/database1/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../database1/app/src/main/java/com/example/database1/mydbhelper1.java" beforeDir="false" afterPath="$PROJECT_DIR$/../database1/app/src/main/java/com/example/database1/mydbhelper1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../database2/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../database2/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../database2/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../database2/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../notification/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../notification/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../notification/app/src/main/java/com/example/notification/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../notification/app/src/main/java/com/example/notification/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../notification/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../notification/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../takingpicture/app/src/main/java/com/example/takingpicture/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../takingpicture/app/src/main/java/com/example/takingpicture/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../toolbar/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../toolbar/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../toolbar/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../toolbar/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../toolbar/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../toolbar/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/.idea/deploymentTargetDropDown.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/.idea/migrations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/androidTest/java/com/example/messagewithme/ExampleInstrumentedTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/firebase-playstore.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/java/com/example/messagewithme/LoginPhoneNumberActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/java/com/example/messagewithme/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/java/com/example/messagewithme/SplashActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/phone_image-playstore.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/drawable/backgrondfile.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/drawable/circular_bg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/drawable/edit_text_rounded_corner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/drawable/firebase_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/drawable/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/drawable/message_svgrepo_com.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/layout/activity_login_phone_number.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/layout/activity_splash.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-anydpi-v26/firebase.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-anydpi-v26/firebase_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-anydpi-v26/phone_image.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-anydpi-v26/phone_image_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-hdpi/firebase.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-hdpi/firebase_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-hdpi/firebase_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-hdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-hdpi/phone_image.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-hdpi/phone_image_foreground.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-hdpi/phone_image_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-mdpi/firebase.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-mdpi/firebase_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-mdpi/firebase_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-mdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-mdpi/phone_image.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-mdpi/phone_image_foreground.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-mdpi/phone_image_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xhdpi/firebase.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xhdpi/firebase_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xhdpi/firebase_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xhdpi/phone_image.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xhdpi/phone_image_foreground.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xhdpi/phone_image_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xxhdpi/firebase.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xxhdpi/firebase_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xxhdpi/firebase_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xxhdpi/phone_image.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xxhdpi/phone_image_foreground.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xxhdpi/phone_image_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xxxhdpi/firebase.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xxxhdpi/firebase_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xxxhdpi/firebase_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xxxhdpi/phone_image.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xxxhdpi/phone_image_foreground.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/mipmap-xxxhdpi/phone_image_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/values-night/themes.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/values/firebase_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/values/phone_image_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/values/themes.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/xml/backup_rules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/main/res/xml/data_extraction_rules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/app/src/test/java/com/example/messagewithme/ExampleUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/gradle/libs.versions.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../messagewithme/settings.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\sumit\.android\avd\Pixel_7_Pro_API_31.avd]" />
   <component name="ExternalProjectsData">
@@ -157,6 +181,9 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
   <component name="ProjectId" id="2awT87OXRp6ENXrXgBXkOH1fGGg" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -165,19 +192,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/sumit/Desktop/android files/whatsapp&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;experimental&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/sumit/OneDrive/Desktop/yantra hackathon/messagewithme",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "experimental"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\sumit\Desktop\android files\whatsapp\app\src\main\res\drawable" />
@@ -197,6 +226,7 @@
       <option name="ALL_USERS" value="false" />
       <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
       <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
       <option name="CLEAR_LOGCAT" value="false" />
@@ -249,9 +279,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
+      <method v="2" />
     </configuration>
     <configuration name="whatsapp:app [signingReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -272,6 +300,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="whatsapp:app [testDebugUnitTest]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -293,6 +322,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
     <recent_temporary>

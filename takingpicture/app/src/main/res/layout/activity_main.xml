@@ -13,6 +13,7 @@
         android:layout_width="400dp"
         android:background="#FF5722"
         android:layout_height="400dp"
+        android:backgroundTint="@color/black"
         android:scaleType="fitXY"
         android:id="@+id/imgcamera"
         />

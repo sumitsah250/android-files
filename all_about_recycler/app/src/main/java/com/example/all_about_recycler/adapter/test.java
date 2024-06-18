@@ -105,7 +105,6 @@ public class test extends RecyclerView.Adapter<test.ViewHolder> {
                         arrayList.add(new fruitdetails(R.drawable.ic_launcher_background,edttitle.getText().toString(),edtdiscription.getText().toString()));
                         notifyItemChanged(position);
                         dialog.dismiss();
-
                     }
                 });
 

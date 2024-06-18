@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
                 iGallary.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(iGallary,GALLARY_REQ_CODE);
 
-
 //                Intent icamera =new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 //                startActivityForResult(icamera,CAMERA_REQ_CODE);
             }

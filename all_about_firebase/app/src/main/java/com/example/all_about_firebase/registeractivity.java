@@ -67,6 +67,7 @@ public class registeractivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     myUser myUser = new myUser(textEmail,textPassword);
                     String id = task.getResult().getUser().getUid();
+
                     try {
                         database.getReference().child("users").child(id).setValue(myUser);
                     }catch (Exception e){
