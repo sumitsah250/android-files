@@ -2,6 +2,7 @@ package com.example.all_about_recycler;
 
 import android.os.Bundle;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import io.realm.Realm;
 import io.realm.RealmObject;
 
 public class MainActivity extends AppCompatActivity {
+    TextView textView;
 
 
 
@@ -37,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        textView=findViewById(R.id.typetext);
+
+        
 
 
 

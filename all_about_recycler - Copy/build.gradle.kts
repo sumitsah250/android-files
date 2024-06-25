@@ -6,6 +6,9 @@ buildscript {
     repositories {
         mavenCentral()
         google()
+
+
+            maven { url=uri("https://jitpack.io")  }
     }
     dependencies {
         classpath ("io.realm:realm-gradle-plugin:10.15.1")

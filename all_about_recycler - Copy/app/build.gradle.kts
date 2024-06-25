@@ -42,6 +42,7 @@ android {
 
 
 dependencies {
+    implementation ("com.github.NitishGadangi:TypeWriter-TextView:v1.2")
 
     implementation(libs.appcompat)
     implementation(libs.material)
