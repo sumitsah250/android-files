@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:layout_margin="20dp"
+    tools:context=".LoginOtpActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_weight="20"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center">
+
+            <RelativeLayout
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+
+                android:layout_margin="10dp"
+                android:background="@drawable/circular_bg"
+                android:backgroundTint="@color/light_gray">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="1"
+                    android:textColor="@color/white"
+
+                    android:textSize="18sp">
+
+                </TextView>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/circular_bg"
+                android:backgroundTint="@color/my_primary">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="2"
+                    android:textColor="@color/white"
+
+                    android:textSize="18sp">
+
+                </TextView>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/circular_bg"
+                android:backgroundTint="@color/light_gray">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="3"
+                    android:textColor="@color/white"
+                    android:textSize="18sp">
+
+                </TextView>
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="293dp"
+        android:layout_height="241dp"
+        android:layout_weight="20"
+
+        android:background="@color/white"
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="@color/white"
+
+        android:src="@drawable/password_svgrepo_com">
+
+    </ImageView>
+
+    <TextView
+        android:layout_weight="5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter OTP sent to your phone number"
+        android:layout_margin="4dp"
+        android:layout_marginTop="5dp"
+        android:textSize="25dp"
+        android:layout_marginLeft="10dp"
+
+        android:textStyle="bold"
+        >
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+
+        android:orientation="horizontal">
+
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@drawable/edit_text_rounded_corner"
+            android:elevation="5dp"
+            android:hint="OTP"
+            android:maxLength="6"
+            android:inputType="number"
+            android:padding="10dp"
+            android:id="@+id/login_otp"
+            >
+
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="10"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NEXT"
+            android:textSize="20sp"
+            android:id="@+id/login_next_btn"
+            >
+
+        </Button>
+
+        <ProgressBar
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/my_primary"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:id="@+id/login_progress_bar"
+            >
+        </ProgressBar>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="10"
+        android:text="Resend OTP in 30 sec"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:id="@+id/resent_otp_textview"
+        >
+
+    </TextView>
+
+
+
+
+</LinearLayout>
