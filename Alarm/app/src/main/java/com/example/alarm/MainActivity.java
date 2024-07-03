@@ -46,13 +46,15 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Set Alarm " + jam + " : " + menit, Toast.LENGTH_SHORT).show();
                 try {
                     setTimer();
+                    setTimer();
+                    setTimer();
 
                 }catch (Exception e){
                     Toast.makeText(MainActivity.this, "1"+e, Toast.LENGTH_SHORT).show();
 
                 }
                 try {
-                    notification();
+//                    notification();
 
                 }catch (Exception e){
                     Toast.makeText(MainActivity.this, "2"+e, Toast.LENGTH_SHORT).show();
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             String description = "Hey, Wake Up!!";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
 
-            NotificationChannel channel  = new NotificationChannel("Notify", name,importance);
+            NotificationChannel channel  = new NotificationChannel("Notify",name,importance);
             channel.setDescription(description);
 
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
@@ -82,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setTimer() {
         AlarmManager alarmManager  = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
 
         Date date = new Date();
 

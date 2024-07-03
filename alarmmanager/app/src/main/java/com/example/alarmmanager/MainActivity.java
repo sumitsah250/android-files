@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         editText = findViewById(R.id.edttime);
         btnfire = findViewById(R.id.btnfire);
-        PendingIntent pi = PendingIntent.getBroadcast(MainActivity.this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        PendingIntent pi = PendingIntent.getBroadcast(MainActivity.this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_MUTABLE);
 //        long triggertime = System.currentTimeMillis() + Getmili(19,22);
 //        alarmManager.set(AlarmManager.RTC_WAKEUP, triggertime, pi);
 
