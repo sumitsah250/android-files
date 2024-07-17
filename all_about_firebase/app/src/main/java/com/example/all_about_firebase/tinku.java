@@ -32,6 +32,7 @@ public class tinku extends AppCompatActivity {
     Button logout;
     private ListView listView;
     myUser myUser;
+    String phonenum="xxxxxx";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,17 +61,23 @@ public class tinku extends AppCompatActivity {
         ArrayList<String> list = new ArrayList<>();
         ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);
         listView.setAdapter(adapter);
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot snapshot1 : snapshot.getChildren()){
-                    myUser= snapshot1.getValue(myUser.class);
-                    String info = myUser.getEmail()+" : "+ myUser.getPassword();
-                    list.add(info);
-//                    list.add(snapshot1.getValue().toString());
-                }
-                adapter.notifyDataSetChanged();
+                myUser =snapshot.getValue(myUser.class);
+                String info = myUser.getEmail()+" : "+ myUser.getPassword();
+                Toast.makeText(tinku.this, ""+info, Toast.LENGTH_SHORT).show();
+
+//                for(DataSnapshot snapshot1 : snapshot.getChildren()){
+//                    myUser= snapshot1.getValue(myUser.class);
+//                    String info = myUser.getEmail()+" : "+ myUser.getPassword();
+//                    list.add(info);
+////                    list.add(snapshot1.getValue().toString());
+//                }
+//                adapter.notifyDataSetChanged();
+
+
             }
 
             @Override
