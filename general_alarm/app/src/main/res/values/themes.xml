@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.General_alarm" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/levender</item>
+        <item name="colorPrimaryVariant">@color/levender</item>
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.General_alarm" parent="Base.Theme.General_alarm" />
+</resources>

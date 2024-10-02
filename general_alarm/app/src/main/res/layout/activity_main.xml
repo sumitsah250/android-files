@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Select Time"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:id="@+id/btnselecttime"
+        >
+
+    </TextView>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/alarm_clock_svgrepo_com"
+        android:layout_gravity="center"
+        >
+    </ImageView>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    ><Button
+    android:layout_width="150dp"
+    android:id="@+id/btnselecttime1"
+    android:layout_height="wrap_content"
+    android:textSize="20sp"
+    android:padding="8dp"
+    android:layout_margin="20dp"
+    android:text="Set \nAlarm"
+    android:layout_marginStart="40dp"
+    >
+</Button>
+
+    <Button
+        android:id="@+id/btncancelalarm"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="20dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="241dp"
+
+        android:padding="8dp"
+        android:text="Cancel \nAlarm"
+        android:textSize="20sp">
+
+    </Button>
+
+
+
+</RelativeLayout>
+
+
+
+</LinearLayout>
