@@ -1,11 +1,13 @@
 package com.boss.alarm;
 
+import android.Manifest;
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,8 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -34,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission (MainActivity.this, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions ( MainActivity.this,new String[] {Manifest.permission.POST_NOTIFICATIONS}, 101);
+             }
+
+}
 
 
             binding= ActivityMainBinding.inflate(getLayoutInflater());
@@ -63,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                                         String.format(timePicker.getHour()+":"+timePicker.getMinute()+"AM")
                                 );
                             }
-                            calendar= Calendar.getInstance();
+                            calendar=Calendar.getInstance();
                             calendar.set(Calendar.HOUR_OF_DAY,timePicker.getHour());
                             calendar.set(Calendar.MINUTE,timePicker.getMinute());
                             calendar.set(Calendar.SECOND,0);
@@ -90,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(MainActivity.this,AlarmReciver.class);
-                    pendingIntent = pendingIntent.getBroadcast(MainActivity.this,0,intent, PendingIntent.FLAG_IMMUTABLE |PendingIntent.FLAG_UPDATE_CURRENT);
+                    pendingIntent = pendingIntent.getBroadcast(MainActivity.this,0,intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
                     if(alarmManager == null){
                         alarmManager=(AlarmManager) getSystemService(Context.ALARM_SERVICE);
@@ -111,8 +121,6 @@ public class MainActivity extends AppCompatActivity {
 
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
-
-
 
         }
     }
