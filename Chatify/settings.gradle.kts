@@ -19,8 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Check_Box"
-include(":app")
-include(":app")
+rootProject.name = "Chatify"
 include(":app")
  
