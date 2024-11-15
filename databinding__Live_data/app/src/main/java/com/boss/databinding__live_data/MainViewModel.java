@@ -9,10 +9,10 @@ public class MainViewModel extends ViewModel{
     @Override
     protected void onCleared() {
         super.onCleared();
-        Log.i("MainViewModel","view model is destroyed");
+        Log.i("activityinfo","view model is destroyed");
     }
     public MainViewModel() {
-        Log.i("MainViewModel","view model is created");
+        Log.i("activityinfo","view model is created");
     }
 
 

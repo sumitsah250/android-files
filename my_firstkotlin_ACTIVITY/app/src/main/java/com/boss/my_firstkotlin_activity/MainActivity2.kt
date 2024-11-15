@@ -1,11 +1,12 @@
 package com.boss.my_firstkotlin_activity
 
 import android.os.Bundle
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,12 +18,70 @@ class MainActivity2 : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val text1 : TextView = findViewById(R.id.textView)
-        val bundle =intent.extras
+        val recyclerview : RecyclerView=findViewById(R.id.recyclerView)
+//        val text1 : TextView = findViewById(R.id.textView)
+//        val bundle =intent.extras
+//
+//        if (bundle != null) {
+//            text1.text = bundle.getString("Name")
+//        }
 
-        if (bundle != null) {
-            text1.text = bundle.getString("Name")
-        }
+        val arrcontacts = ArrayList<ContactModel>()
+        var i = 0;
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+        i++
+        arrcontacts.add(ContactModel(i,9809641235,"Sumit"))
+
+        recyclerview.layoutManager = GridLayoutManager(this,3)
+
+
+
+
+      val recycleradapter = RecyclerContactAdapter(this,arrcontacts)
+        recyclerview.adapter = recycleradapter
+
+
+
+
+
 
     }
 }

@@ -26,6 +26,9 @@ android {
             )
         }
     }
+    buildFeatures{
+        viewBinding=true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -33,6 +36,10 @@ android {
 }
 
 dependencies {
+    // ViewModel
+    implementation ("androidx.lifecycle:lifecycle-viewmodel:2.2.0")
+    // LiveData
+    implementation ("androidx.lifecycle:lifecycle-livedata:$2.2.0")
 
     implementation(libs.appcompat)
     implementation(libs.material)

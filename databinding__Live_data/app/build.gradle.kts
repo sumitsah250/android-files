@@ -18,7 +18,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
-    dataBinding = true
         viewBinding=true
     }
 
@@ -39,6 +38,7 @@ android {
 
 dependencies {
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.2.0")
 
     implementation(libs.appcompat)
     implementation(libs.material)
