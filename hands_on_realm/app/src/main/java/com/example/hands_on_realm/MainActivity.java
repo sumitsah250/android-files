@@ -23,6 +23,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.hands_on_realm.databinding.ActivityMainBinding;
+import com.example.hands_on_realm.model.Constants;
 import com.example.hands_on_realm.model.MainViewModel;
 import com.example.hands_on_realm.model.Student;
 import com.example.hands_on_realm.model.StudentAdapter;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     EditText edtname,edtdetails;
     TextView display;
     Button btnsave;
-    Realm realm;
+//    Realm realm;
 //    ListView listView
 
     ArrayAdapter<String> arr;
@@ -58,18 +59,21 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-
+        Constants.number=999;
        //main
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         //main
 
 //      listView=findViewById(R.id.listview);
+        Constants.number=999;
         edtname=findViewById(R.id.edtname1);
         edtdetails=findViewById(R.id.edtdetails1);
         btnsave=findViewById(R.id.save);
+         edtname.setText(Constants.Name);
+         edtdetails.setText(String.valueOf(Constants.number));
 
-        realm = Realm.getDefaultInstance();
-        readData();
+//        realm = Realm.getDefaultInstance();
+//        readData();
 //        realm.beginTransaction();
 //        realm.deleteAll();
 //        realm.commitTransaction();
@@ -108,28 +112,18 @@ public class MainActivity extends AppCompatActivity {
         mainViewModel.addstudent(s);
     }
 
-    private void readData(){
-        RealmResults<Student> student1 = null;
-               student1= realm.where(Student.class).findAll();
-        String data ="";
-        ArrayList<String> arrayList = new ArrayList<>();
-//        for(Student student: student1){
-//            try {
-//                Log.d(TAG, "readData:");
-        for (Student student : student1) {
-            data = student.getName() + " - " + student.getAge();
-            arrayList.add(data);
-        }
-//        data = data + "\n" + student1.toString();
-//        Toast.makeText(this, ""+data, Toast.LENGTH_SHORT).show();
-//        arrayList.add(data);
-//            }catch (NullPointerException e){
-//                e.printStackTrace();
-//            }
+//    private void readData(){
+//        RealmResults<Student> student1 = null;
+//               student1= realm.where(Student.class).findAll();
+//        String data ="";
+//        ArrayList<String> arrayList = new ArrayList<>();
+//
+//        for (Student student : student1) {
+//            data = student.getName() + " - " + student.getAge();
+//            arrayList.add(data);
 //        }
-        arr = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
-//        listView.setAdapter(arr);
-
-
-    }
+//        arr = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
+//
+//
+//    }
 }

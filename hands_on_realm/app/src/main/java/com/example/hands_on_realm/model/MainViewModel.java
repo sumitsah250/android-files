@@ -1,6 +1,7 @@
 package com.example.hands_on_realm.model;
 
 import android.app.Application;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -21,6 +22,7 @@ public class MainViewModel extends AndroidViewModel {
         super( application);
         Realm.init(application);
         setUpDatabase();
+        Toast.makeText(application, ""+Constants.number, Toast.LENGTH_SHORT).show();
     }
     void setUpDatabase(){
         realm = Realm.getDefaultInstance();
