@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/search_svgrepo_com__1_"
+        android:title="search"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/groups"
+        android:title="groups" />
+    <item
+        android:id="@+id/invite"
+        android:title="invite" />
+    <item
+        android:icon="@drawable/camera_svgrepo_com"
+        android:title="Camera"
+        android:visible="true"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/logout"
+        android:title="Logout" />
+    <item
+        android:id="@+id/settings"
+        android:title="settings" />
+</menu>

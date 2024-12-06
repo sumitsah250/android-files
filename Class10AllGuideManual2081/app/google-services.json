@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "95288918904",
+    "project_id": "class-10-all-guide-21d0a",
+    "storage_bucket": "class-10-all-guide-21d0a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95288918904:android:dc94c2f47320970ee77e8d",
+        "android_client_info": {
+          "package_name": "com.boss.class10allguidemanual2081"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsSx0IXed37jxPbnDHYJ-qNdtFGFV6RMg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

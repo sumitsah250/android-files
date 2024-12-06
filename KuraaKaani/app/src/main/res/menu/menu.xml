@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/chats"
+        android:icon="@drawable/chat_svgrepo_com"
+        android:title="Charts" />
+    <item
+        android:id="@+id/status"
+        android:icon="@drawable/app_logo"
+        android:title="Status" />
+    <item
+        android:icon="@drawable/call_dropped_rounded_svgrepo_com"
+        android:title="Calls" />
+</menu>

@@ -46,8 +46,7 @@ public class loginactivity extends AppCompatActivity {
                     public void onSuccess(AuthResult authResult) {
                         Toast.makeText(loginactivity.this, "login successful", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(loginactivity.this, tinku.class));
-                         finish();
-                    }
+                         finish();                    }
                 });
 
             }

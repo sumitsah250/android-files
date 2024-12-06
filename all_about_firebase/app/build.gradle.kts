@@ -53,12 +53,6 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    //
-    implementation ("com.google.mlkit:face-detection:16.1.6")
-    implementation ("com.google.android.gms:play-services-mlkit-face-detection:17.1.0")
-    compile("com.github.sujithkanna:smileyrating:2.0.0")
-    implementation("com.github.sujithkanna:smileyrating:2.0.0")
-    implementation("org.greenrobot:eventbus:3.3.1")
-    ///
+
 
 }

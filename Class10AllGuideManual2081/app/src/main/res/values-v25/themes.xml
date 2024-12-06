@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorPrimary">#000</item>
+        <item name="android:colorSecondary">#000</item>
+        <!-- Customize your theme here -->
+    </style>
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/main"
+    android:padding="16dp"
+    android:gravity="center"
+    android:background="@drawable/gradient_background">
+
+    <!-- Logo -->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profilepicture"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_gravity="center"
+        android:src="@drawable/person_circle_svgrepo_com"
+        android:contentDescription="Logo"
+
+      />
+
+    <!-- Login Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profile info"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:layout_marginTop="16dp" />
+
+    <!-- Username Field -->
+    <EditText
+        android:id="@+id/edtusername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your username"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_edittext"
+        android:padding="12dp"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/btnsetup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Setup"
+        android:backgroundTint="#FF6F00"
+        android:textColor="#FFFFFF"
+        android:padding="12dp" />
+
+
+</LinearLayout>
