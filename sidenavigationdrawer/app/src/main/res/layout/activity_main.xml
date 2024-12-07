@@ -14,9 +14,12 @@
     </include>
 
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:menu="@menu/main_menu"
+        app:itemIconPadding="20dp"
+        app:dividerInsetStart="30dp"
         android:layout_gravity="start"
         app:headerLayout="@layout/header"
         >

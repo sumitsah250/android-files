@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="Home"
+            android:icon="@drawable/home_svgrepo_com"
+            >
+
+        </item>
+        <item
+            android:id="@+id/privacy"
+            android:title="Privacy Policy"
+            android:icon="@drawable/privacy_tips_svgrepo_com"
+            >
+
+        </item>
+        <item
+            android:id="@+id/rate"
+            android:title="Rate this App"
+            android:icon="@drawable/star_svgrepo_com"
+            >
+
+        </item>
+        <item
+            android:id="@+id/seeallapps"
+            android:title="See all apps"
+            android:icon="@drawable/all_layers_svgrepo_com"
+            />
+
+        <item
+            android:id="@+id/share"
+            android:title="Share App"
+            android:icon="@drawable/share_svgrepo_com"
+            >
+        </item>
+    </group>
+
+
+</menu>

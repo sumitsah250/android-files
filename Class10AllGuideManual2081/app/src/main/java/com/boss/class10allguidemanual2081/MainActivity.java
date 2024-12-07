@@ -1,6 +1,7 @@
 package com.boss.class10allguidemanual2081;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -15,8 +16,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
+import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.boss.Subjects.GeneralEnglish.EnglishMediumMath;
 import com.boss.Subjects.GeneralEnglish.EnglishMediumOptMath;
@@ -33,7 +36,9 @@ import com.boss.Subjects.GeneralEnglish.NeplaiMediumSocial;
 import com.boss.Subjects.GeneralEnglish.SeeModelQuestion;
 import com.boss.Subjects.GeneralEnglish.SeeModelSolution;
 import com.boss.class10allguidemanual2081.databinding.ActivityMainBinding;
+import com.boss.class10allguidemanual2081.databinding.MainactivityContentBinding;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
@@ -45,7 +50,8 @@ import com.google.android.play.core.review.ReviewManagerFactory;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
-    ActivityMainBinding binding;
+    ActivityMainBinding binding1;
+
     private AppUpdateManager appUpdateManager;
     private static final int REQUEST_CODE_UPDATE = 100;
 //    FirebaseFirestore firestore;
@@ -55,13 +61,42 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        binding1 = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding1.getRoot());
+
+         //navigation bar
+        MainactivityContentBinding binding = MainactivityContentBinding.bind(binding1.includedLayout.getRoot());
+
+        binding.toggle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding1.main.open();
+            }
         });
+        binding1.navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId=item.getItemId();
+                if(itemId==R.id.nav_home){
+                    binding1.main.closeDrawer(GravityCompat.START);
+                }
+                if(itemId==R.id.privacy){
+                    openPrivacyPolicy();
+                }
+                if(itemId==R.id.rate){
+                    showRateApp();
+                }
+                if(itemId==R.id.seeallapps){
+                    openPlayStore();
+                }
+                if(itemId==R.id.share){
+                    shareApp();
+                }
+                return false;
+            }
+        });
+
+        //navigation
 
         //for action bar
 
@@ -108,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
 
         binding.generalEnglish.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -257,7 +291,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        new MenuInflater(this).inflate(R.menu.top_menu,menu);
+//        new MenuInflater(this).inflate(R.menu.top_menu,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -292,5 +326,39 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Unable to show review dialog at this time.", Toast.LENGTH_SHORT).show();
             }
         });
+
+
+    }
+    private void openPlayStore() {
+        String developerPageUrl = "https://play.google.com/store/apps/developer?id=S developers";
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(developerPageUrl));
+        startActivity(intent);
+    }
+    private void shareApp() {
+        String appPackageName = "com.boss.class10allguidemanual2081"; // Replace with your app's package name
+        String appUrl = "https://play.google.com/store/apps/details?id=" + appPackageName;
+
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Check out this app!"); // Title of the message
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "I recommend this app: " + appUrl); // Body of the message
+
+        startActivity(Intent.createChooser(shareIntent, "Share via"));
+    }
+    private void openPrivacyPolicy() {
+        String privacyPolicyUrl = "https://www.termsfeed.com/live/812849f8-27eb-482e-9a40-3b21895767f1"; // Replace with your actual URL
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(privacyPolicyUrl));
+        startActivity(intent);
+    }
+    @Override
+    public void onBackPressed() {
+        // Check if the navigation drawer is open
+        if (binding1.main.isDrawerOpen(GravityCompat.START)) {
+            // Close the drawer if it is open
+            binding1.main.closeDrawer(GravityCompat.START);
+        } else {
+            // Otherwise, follow the default back button behavior
+            super.onBackPressed();
+        }
     }
 }
