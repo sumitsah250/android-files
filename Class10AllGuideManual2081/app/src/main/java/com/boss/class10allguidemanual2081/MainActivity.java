@@ -1,20 +1,30 @@
 package com.boss.class10allguidemanual2081;
 
+import android.Manifest;
+import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowMetrics;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
@@ -35,8 +45,15 @@ import com.boss.Subjects.GeneralEnglish.NepaliMediumScience;
 import com.boss.Subjects.GeneralEnglish.NeplaiMediumSocial;
 import com.boss.Subjects.GeneralEnglish.SeeModelQuestion;
 import com.boss.Subjects.GeneralEnglish.SeeModelSolution;
+import com.boss.class10allguidemanual2081.adapter.Details;
 import com.boss.class10allguidemanual2081.databinding.ActivityMainBinding;
 import com.boss.class10allguidemanual2081.databinding.MainactivityContentBinding;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.play.core.appupdate.AppUpdateInfo;
@@ -51,9 +68,10 @@ import com.google.android.play.core.review.ReviewManagerFactory;
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     ActivityMainBinding binding1;
-
     private AppUpdateManager appUpdateManager;
     private static final int REQUEST_CODE_UPDATE = 100;
+    private static String Banner_AD_UNIT_ID="ca-app-pub-8523770818071031/7603943298";
+    private static String TEST_AD_UNIT_ID="ca-app-pub-3940256099942544/9214589741";
 //    FirebaseFirestore firestore;
 //    ArrayList<Model> ChapterList;
 //    Adapter adapter;
@@ -64,7 +82,41 @@ public class MainActivity extends AppCompatActivity {
         binding1 = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding1.getRoot());
 
-         //navigation bar
+
+
+        /// for ads
+        new Thread(
+                () -> {
+                    // Initialize the Google Mobile Ads SDK on a background thread.
+                    MobileAds.initialize(this, initializationStatus -> {});
+                })
+                .start();
+
+
+        //for ads
+        AdView adView = new AdView(this);
+        adView.setAdUnitId(Banner_AD_UNIT_ID);
+        adView.setAdSize(getAdSize());
+        AdView adContainerView = findViewById(R.id.bannerAds);
+        adContainerView.removeAllViews();
+        adContainerView.addView(adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+        adView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                adContainerView.setVisibility(View.VISIBLE);  // Show ad when loaded
+            }
+
+            @Override
+            public void onAdFailedToLoad(LoadAdError adError) {
+                adContainerView.setVisibility(View.GONE);  // Hide ad when failed
+            }
+        });
+        //for ads
+
+
+        //navigation bar
         MainactivityContentBinding binding = MainactivityContentBinding.bind(binding1.includedLayout.getRoot());
 
         binding.toggle.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +147,17 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+        
+        //notification permission
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                    != PackageManager.PERMISSION_GRANTED) {
+                // Request the permission
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.POST_NOTIFICATIONS}, 101);
+            }
+        }
+        //notification permission
 
         //navigation
 
@@ -351,14 +414,80 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 101) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted, proceed with showing notifications
+                Toast.makeText(this, "Permission granted for notifications!", Toast.LENGTH_SHORT).show();
+            } else {
+                // Permission denied, handle accordingly
+                Toast.makeText(this, "Permission denied! You won't receive notifications.", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+    @Override
     public void onBackPressed() {
         // Check if the navigation drawer is open
         if (binding1.main.isDrawerOpen(GravityCompat.START)) {
             // Close the drawer if it is open
             binding1.main.closeDrawer(GravityCompat.START);
         } else {
+            onbackpopup();
             // Otherwise, follow the default back button behavior
-            super.onBackPressed();
         }
     }
+    private AdSize getAdSize(){
+        //calculate with pixels
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        int addWidthPixels = displayMetrics.widthPixels;
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.R){
+            WindowMetrics windowMetrics = getWindowManager().getCurrentWindowMetrics();
+            addWidthPixels=windowMetrics.getBounds().width();
+        }
+
+        //calculate density
+        float density = displayMetrics.density;
+        //calculate adwidht
+        int adWidth = (int) (addWidthPixels/density);
+        return AdSize.getCurrentOrientationInlineAdaptiveBannerAdSize(this,adWidth);
+
+    }
+
+    public void onbackpopup(){
+        Dialog dialog = new Dialog(MainActivity.this,R.style.CustomDialogTheme);
+        dialog.setContentView(R.layout.custom_on_backpressed);
+        // Reference views in the dialog
+        TextView txtDelete = dialog.findViewById(R.id.txtDelete);
+        TextView tvDeleteDialogMessage = dialog.findViewById(R.id.tvDeleteDialogMessage);
+        AppCompatButton btnDeleteConfirm = dialog.findViewById(R.id.btnNo);
+        AppCompatButton btnDeleteCancel = dialog.findViewById(R.id.btnDelete);
+        txtDelete.setText("Exit");
+        tvDeleteDialogMessage.setText("Do you want to exit an App?");
+        btnDeleteCancel.setText("Exit");
+
+        // Set listeners for the buttons
+        btnDeleteConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Perform delete action
+                dialog.dismiss();
+            }
+        });
+
+        btnDeleteCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Cancel the delete action
+                MainActivity.super.onBackPressed();
+                dialog.dismiss();
+
+            }
+        });
+        // Show the dialog
+        dialog.show();
+    }
+
+
 }

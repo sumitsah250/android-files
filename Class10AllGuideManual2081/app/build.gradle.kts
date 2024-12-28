@@ -11,8 +11,8 @@ android {
         applicationId = "com.boss.class10allguidemanual2081"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 3
+        versionName = "1.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -46,7 +46,9 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 //    implementation ("com.github.barteksc:android-pdf-viewer:2.8.2")
-    implementation (libs.android.pdf.viewer)
+//    implementation ("com.github.barteksc:android-pdf-viewer:3.2.0-beta.1")
+    implementation ("com.github.mhiew:android-pdf-viewer:3.2.0-beta.3")
+//    implementation (libs.android.pdf.viewer)
     implementation("com.squareup.okhttp3:okhttp:4.9.3")
 //    implementation("io.github.afreakyelf:Pdf-Viewer:2.1.1")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
@@ -61,5 +63,11 @@ dependencies {
     // For Kotlin users also add the Kotlin extensions library for Play In-App Review:
     implementation ("com.google.android.play:review-ktx:2.0.2")
     //rate
+        //for ads
+    implementation("com.google.android.gms:play-services-ads:23.4.0")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
+    implementation("com.google.android.play:app-update:2.1.0")
+//    for ads
+
 
 }

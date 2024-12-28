@@ -2,15 +2,20 @@ package com.boss.allaboutmaps;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CircleOptions;
+import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.boss.allaboutmaps.databinding.ActivityMapsBinding;
+import com.google.android.gms.maps.model.PolygonOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -30,22 +35,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng wrc = new LatLng(28.2539, 83.9764);
+//        mMap.addMarker(new MarkerOptions().position(wrc).title("Marker in WRC"));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(wrc));
+        MarkerOptions markerOptions = new MarkerOptions().position(wrc).title("Marker in Wrc");
+        mMap.addMarker(markerOptions);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(wrc));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(wrc,16f));
+
+        //circle
+
+        mMap.addCircle(new CircleOptions().center(wrc).radius(1000).fillColor(Color.RED).strokeColor(R.color.black));
+
+
+        //polygon
+
+//        mMap.addPolygon(new PolygonOptions().add(new LatLng(28.2539, 83.9764)
+//                ,new LatLng(29.2539, 84.9764)
+//                ,new LatLng(30.2539, 85.9764)
+//                ,new LatLng(31.2539, 86.9764)
+//                ,new LatLng(28.2539, 83.9764)).fillColor(Color.YELLOW).strokeColor(Color.GREEN));
+
+//        mMap.addGroundOverlay(new GroundOverlayOptions().position(wrc,1000f,1000f)
+//                .image(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher_background)).clickable(true));
     }
 }

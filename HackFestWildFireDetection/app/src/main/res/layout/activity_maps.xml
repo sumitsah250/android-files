@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <org.osmdroid.views.MapView
+        android:id="@+id/osmmap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:layout_width="188dp"
+        android:layout_height="188dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Indices"
+            android:textSize="24dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:background="#44ADE0"
+            >
+
+        </TextView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_margin="1dp"
+            android:background="#380089FF"
+            >
+            <ImageView
+                android:layout_width="40dp"
+                android:src="@drawable/red_circle_svgrepo_com__1_"
+                android:layout_height="40dp">
+            </ImageView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:text="Critical"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                >
+            </TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_margin="1dp"
+            android:padding="5dp"
+
+            android:background="#380089FF"
+            >
+            <ImageView
+                android:layout_width="37dp"
+                android:src="@drawable/red_circle_svgrepo_com"
+                android:layout_height="37dp">
+            </ImageView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:text="Moderate"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                >
+            </TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_margin="1dp"
+            android:background="#380089FF"
+            >
+            <ImageView
+                android:layout_width="35dp"
+                android:src="@drawable/yellow_circle_svgrepo_com"
+                android:layout_height="35dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:text="Safe"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                >
+            </TextView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:clickable="true"
+       android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="40dp"
+        android:backgroundTint="#000"
+        app:borderWidth="2dp"
+        app:tint="@color/white"
+        app:srcCompat="@drawable/back_svgrepo_com"
+        />
+
+
+
+
+</RelativeLayout>

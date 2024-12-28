@@ -36,6 +36,7 @@ public class setupActivity extends AppCompatActivity {
     Uri selectedimage;
     ProgressDialog dialog;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,11 +116,9 @@ public class setupActivity extends AppCompatActivity {
                             }
                         });
                     }
-
                 }else{
                     binding.edtusername.setError("username can't be empty");
                 }
-
             }
         });
 

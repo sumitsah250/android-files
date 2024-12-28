@@ -53,7 +53,7 @@ public class SeeModelQuestion extends AppCompatActivity {
     }
     private void LoadData() {
         ChapterList.clear();
-        firestore.collection("GeneralEnglish").orderBy("id", Query.Direction.ASCENDING)
+        firestore.collection("SeeModelQuestion").orderBy("id", Query.Direction.ASCENDING)
                 .addSnapshotListener((value, error) -> {
                     if(error!=null){
                         Toast.makeText(this, "Chapter Loaded", Toast.LENGTH_SHORT).show();

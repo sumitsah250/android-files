@@ -57,8 +57,6 @@ public class EnglishMediumMath extends AppCompatActivity {
 
         // for review
 
-
-
         recyclerView=findViewById(R.id.recyclerview);
         firestore=FirebaseFirestore.getInstance();
         ChapterList=new ArrayList<>();

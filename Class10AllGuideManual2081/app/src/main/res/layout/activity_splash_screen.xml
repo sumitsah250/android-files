@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Nepal\'s \nAll-in-One\nClass 10 \nGuide 2081"
+        android:text="Nepal's \nSEE All \nBook &amp; Guides\n2081"
         android:textColor="@color/white"
         android:textSize="40sp"
         android:textStyle="bold"

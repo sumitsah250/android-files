@@ -10,7 +10,9 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
         maven { url= uri("https://jitpack.io") }
-//        maven { url =uri("https://jcenter.bintray.com")}
+        maven { url =uri("https://repository.liferay.com/nexus/content/repositories/public/")}
+        maven { url =uri("https://jcenter.bintray.com")}
+        jcenter()
 
 
     }
@@ -21,8 +23,8 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url= uri("https://jitpack.io") }
-//        maven { url =uri("https://jcenter.bintray.com")}
         maven { url =uri("https://repository.liferay.com/nexus/content/repositories/public/")}
+        maven { url=uri("https://jcenter.bintray.com") }
         gradlePluginPortal()
         jcenter()
 

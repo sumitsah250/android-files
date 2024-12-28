@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.HackFestWildFireDetection" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.HackFestWildFireDetection" parent="Base.Theme.HackFestWildFireDetection" />
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here -->
+    </style>
+    <style name="Theme.MyApp.NoSplash" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Add your customizations if needed -->
+        <item name="android:windowBackground">@null</item>
+    </style>
+</resources>
