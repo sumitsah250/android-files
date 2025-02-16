@@ -1,0 +1,34 @@
+com.boss.simplecalculator.app-constraintlayout-2.2.0-0 C:\Users\sumit\.gradle\caches\8.9\transforms\07cf84000ccc05a58e065440fec94c2b\transformed\constraintlayout-2.2.0\res
+com.boss.simplecalculator.app-lifecycle-viewmodel-2.6.2-1 C:\Users\sumit\.gradle\caches\8.9\transforms\0869d618aba9b91e3494dd5e5b14e963\transformed\lifecycle-viewmodel-2.6.2\res
+com.boss.simplecalculator.app-emoji2-1.3.0-2 C:\Users\sumit\.gradle\caches\8.9\transforms\11e806beb4b8ee1c0d8a34514db5e82a\transformed\emoji2-1.3.0\res
+com.boss.simplecalculator.app-activity-1.9.3-3 C:\Users\sumit\.gradle\caches\8.9\transforms\273bcbd611d08a14d44b41d12c58d0f4\transformed\activity-1.9.3\res
+com.boss.simplecalculator.app-fragment-1.5.4-4 C:\Users\sumit\.gradle\caches\8.9\transforms\2e046d02f2925f59f2d582179a5c5d4f\transformed\fragment-1.5.4\res
+com.boss.simplecalculator.app-lifecycle-runtime-2.6.2-5 C:\Users\sumit\.gradle\caches\8.9\transforms\30b39fc8dc79f253d6ff3a080643cd01\transformed\lifecycle-runtime-2.6.2\res
+com.boss.simplecalculator.app-recyclerview-1.1.0-6 C:\Users\sumit\.gradle\caches\8.9\transforms\342b2c0293f40b526a7e13ebe1fe38ca\transformed\recyclerview-1.1.0\res
+com.boss.simplecalculator.app-coordinatorlayout-1.1.0-7 C:\Users\sumit\.gradle\caches\8.9\transforms\36145fd950f688876549d3fcf4fb2b4d\transformed\coordinatorlayout-1.1.0\res
+com.boss.simplecalculator.app-profileinstaller-1.4.0-8 C:\Users\sumit\.gradle\caches\8.9\transforms\567aed6f848ae1436ebd02b2fe6feb4c\transformed\profileinstaller-1.4.0\res
+com.boss.simplecalculator.app-savedstate-1.2.1-9 C:\Users\sumit\.gradle\caches\8.9\transforms\6c699471f2a5e180a9d21b1e8a485481\transformed\savedstate-1.2.1\res
+com.boss.simplecalculator.app-viewpager2-1.0.0-10 C:\Users\sumit\.gradle\caches\8.9\transforms\6e41384e5798b3352fb28bc077b5ab6f\transformed\viewpager2-1.0.0\res
+com.boss.simplecalculator.app-core-1.13.0-11 C:\Users\sumit\.gradle\caches\8.9\transforms\79ef3bc80e185f07b12ce96b0124b1cc\transformed\core-1.13.0\res
+com.boss.simplecalculator.app-appcompat-resources-1.7.0-12 C:\Users\sumit\.gradle\caches\8.9\transforms\7b62143df74405de4a59afc05809451d\transformed\appcompat-resources-1.7.0\res
+com.boss.simplecalculator.app-appcompat-1.7.0-13 C:\Users\sumit\.gradle\caches\8.9\transforms\7fe4d8a515c4adf090866823b63f5530\transformed\appcompat-1.7.0\res
+com.boss.simplecalculator.app-lifecycle-livedata-2.6.2-14 C:\Users\sumit\.gradle\caches\8.9\transforms\9183514df46a33615bf7b3df2fd9fa47\transformed\lifecycle-livedata-2.6.2\res
+com.boss.simplecalculator.app-material-1.12.0-15 C:\Users\sumit\.gradle\caches\8.9\transforms\9c87c6d266a2025f233bcf0fe160efff\transformed\material-1.12.0\res
+com.boss.simplecalculator.app-annotation-experimental-1.4.0-16 C:\Users\sumit\.gradle\caches\8.9\transforms\a7a81c66ad8815d072db2c095a631ce2\transformed\annotation-experimental-1.4.0\res
+com.boss.simplecalculator.app-core-ktx-1.13.0-17 C:\Users\sumit\.gradle\caches\8.9\transforms\acc7fe612392ecc7e474d17a77aff203\transformed\core-ktx-1.13.0\res
+com.boss.simplecalculator.app-emoji2-views-helper-1.3.0-18 C:\Users\sumit\.gradle\caches\8.9\transforms\b11c2a120df8944caa2cc3aef23d8cef\transformed\emoji2-views-helper-1.3.0\res
+com.boss.simplecalculator.app-lifecycle-process-2.6.2-19 C:\Users\sumit\.gradle\caches\8.9\transforms\b2d6dd316f19fe7afd41cd96d43de970\transformed\lifecycle-process-2.6.2\res
+com.boss.simplecalculator.app-startup-runtime-1.1.1-20 C:\Users\sumit\.gradle\caches\8.9\transforms\d120e41f0137af3bcbb649a6f5fcdf8b\transformed\startup-runtime-1.1.1\res
+com.boss.simplecalculator.app-drawerlayout-1.1.1-21 C:\Users\sumit\.gradle\caches\8.9\transforms\d9afc369bc064882b661a4495967e072\transformed\drawerlayout-1.1.1\res
+com.boss.simplecalculator.app-core-runtime-2.2.0-22 C:\Users\sumit\.gradle\caches\8.9\transforms\e49e9e7e09e4f6847cd47dd56f0b9338\transformed\core-runtime-2.2.0\res
+com.boss.simplecalculator.app-transition-1.5.0-23 C:\Users\sumit\.gradle\caches\8.9\transforms\e4e43123efac2bfb43a279192d355ba2\transformed\transition-1.5.0\res
+com.boss.simplecalculator.app-cardview-1.0.0-24 C:\Users\sumit\.gradle\caches\8.9\transforms\e62e276ec8852513e78405efb475604d\transformed\cardview-1.0.0\res
+com.boss.simplecalculator.app-lifecycle-livedata-core-2.6.2-25 C:\Users\sumit\.gradle\caches\8.9\transforms\e788b0bb0814940fcff90e85b3067f74\transformed\lifecycle-livedata-core-2.6.2\res
+com.boss.simplecalculator.app-lifecycle-viewmodel-savedstate-2.6.2-26 C:\Users\sumit\.gradle\caches\8.9\transforms\f920bbcfb516ff34b1c6da357d5c746e\transformed\lifecycle-viewmodel-savedstate-2.6.2\res
+com.boss.simplecalculator.app-pngs-27 D:\my android files(very improtant)\git-files\SimpleCalculator\app\build\generated\res\pngs\release
+com.boss.simplecalculator.app-resValues-28 D:\my android files(very improtant)\git-files\SimpleCalculator\app\build\generated\res\resValues\release
+com.boss.simplecalculator.app-packageReleaseResources-29 D:\my android files(very improtant)\git-files\SimpleCalculator\app\build\intermediates\incremental\release\packageReleaseResources\merged.dir
+com.boss.simplecalculator.app-packageReleaseResources-30 D:\my android files(very improtant)\git-files\SimpleCalculator\app\build\intermediates\incremental\release\packageReleaseResources\stripped.dir
+com.boss.simplecalculator.app-release-31 D:\my android files(very improtant)\git-files\SimpleCalculator\app\build\intermediates\merged_res\release\mergeReleaseResources
+com.boss.simplecalculator.app-main-32 D:\my android files(very improtant)\git-files\SimpleCalculator\app\src\main\res
+com.boss.simplecalculator.app-release-33 D:\my android files(very improtant)\git-files\SimpleCalculator\app\src\release\res

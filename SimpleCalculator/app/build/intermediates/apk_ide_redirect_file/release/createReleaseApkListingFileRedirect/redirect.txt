@@ -1,0 +1,2 @@
+#- File Locator -
+listingFile=C:/Users/sumit/OneDrive/Desktop/simple calculator/v3/release/output-metadata.json

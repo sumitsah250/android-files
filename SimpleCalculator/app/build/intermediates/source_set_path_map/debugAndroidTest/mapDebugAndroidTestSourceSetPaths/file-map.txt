@@ -1,0 +1,5 @@
+com.boss.simplecalculator.test.app-core-1.6.1-0 C:\Users\sumit\.gradle\caches\8.9\transforms\3bb8abf0ed556ba0d0d46b0d5c3152f5\transformed\core-1.6.1\res
+com.boss.simplecalculator.test.app-androidTest-1 D:\my android files(very improtant)\git-files\SimpleCalculator\app\build\generated\res\resValues\androidTest\debug
+com.boss.simplecalculator.test.app-mergeDebugAndroidTestResources-2 D:\my android files(very improtant)\git-files\SimpleCalculator\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.boss.simplecalculator.test.app-mergeDebugAndroidTestResources-3 D:\my android files(very improtant)\git-files\SimpleCalculator\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.boss.simplecalculator.test.app-debugAndroidTest-4 D:\my android files(very improtant)\git-files\SimpleCalculator\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

@@ -1,0 +1,10 @@
+#Tue Jan 28 08:29:33 NPT 2025
+base.0=D\:\\my android files(very improtant)\\git-files\\SimpleCalculator\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=D\:\\my android files(very improtant)\\git-files\\SimpleCalculator\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.2=D\:\\my android files(very improtant)\\git-files\\SimpleCalculator\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
+path.0=classes.dex
+path.1=0/classes.dex
+path.2=15/classes.dex
+renamed.0=classes.dex
+renamed.1=classes2.dex
+renamed.2=classes3.dex

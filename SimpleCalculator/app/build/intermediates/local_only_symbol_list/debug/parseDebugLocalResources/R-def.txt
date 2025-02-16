@@ -1,0 +1,22 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id btnAdd
+id etNumber
+id rvMarks
+id tvAverage
+id tvGrade
+id tvMark
+id tvSum
+layout activity_main
+layout item_mark
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Base.Theme.SimpleCalculator
+style Theme.SimpleCalculator
+xml backup_rules
+xml data_extraction_rules

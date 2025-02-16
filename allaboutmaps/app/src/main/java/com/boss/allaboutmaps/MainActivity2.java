@@ -52,7 +52,7 @@ public class MainActivity2 extends AppCompatActivity {
         // Set the initial zoom level and center point
         IMapController mapController = mapView.getController();
         mapController.setZoom(10); // Set an initial zoom level
-        mapController.setCenter(new org.osmdroid.api.GeoPoint(51.505, -0.09)); // Set the initial center point (latitude, longitude)
+//        mapController.setCenter(new org.osmdroid.api.GeoPoint(51.505, -0.09)); // Set the initial center point (latitude, longitude)
 
         // Enable location overlay to show user's location
         GpsMyLocationProvider locationProvider = new GpsMyLocationProvider(this);
@@ -83,4 +83,3 @@ public class MainActivity2 extends AppCompatActivity {
 
     }
 
-}
