@@ -48,6 +48,9 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerClickLi
             return insets;
         });
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         dialog= new ProgressDialog(this);
         dialog.setTitle("Loading...");
         manager= new RequestManager(this);
@@ -59,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerClickLi
                 String next_page=String.valueOf(page+1);
                 manager.getCuratedWallpapers(listners,next_page);
                 dialog.show();
-                Toast.makeText(MainActivity.this, next_page, Toast.LENGTH_SHORT).show();
             }
         });
         binding.fabPrev.setOnClickListener(new View.OnClickListener() {
@@ -130,10 +132,14 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerClickLi
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            // Handle the back button press
+            onBackPressed(); // Go back to the previous activity
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
-
     private  final SearchResponseListners searchResponseListners = new SearchResponseListners() {
         @Override
         public void onFetch(SearchApiResponse responseListners, String message) {
@@ -151,4 +157,5 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerClickLi
             dialog.dismiss();
         }
     };
+
 }

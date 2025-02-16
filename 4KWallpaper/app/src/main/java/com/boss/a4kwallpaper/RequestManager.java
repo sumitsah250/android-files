@@ -37,7 +37,7 @@ public class RequestManager {
             page="1";
         }
 
-        Call<CuretedApiResponse> call = callWallpaperList.getWallpapers(page,"20");
+        Call<CuretedApiResponse> call = callWallpaperList.getWallpapers(page,"50");
         call.enqueue(new Callback<CuretedApiResponse>() {
             @Override
             public void onResponse(Call<CuretedApiResponse> call, Response<CuretedApiResponse> response) {

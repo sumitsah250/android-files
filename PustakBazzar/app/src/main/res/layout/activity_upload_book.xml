@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Book Title -->
+    <EditText
+        android:id="@+id/etBookTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Book Title" />
+
+    <!-- Book Author -->
+    <EditText
+        android:id="@+id/etBookAuthor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Author Name" />
+
+    <!-- Book Price -->
+    <EditText
+        android:id="@+id/etBookPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Price (₹)"
+        android:inputType="numberDecimal" />
+
+    <!-- Book Description -->
+    <EditText
+        android:id="@+id/etBookDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Description"
+        android:inputType="textMultiLine"
+        android:gravity="top|start"
+        android:lines="4" />
+
+    <!-- Upload Book Image -->
+    <Button
+        android:id="@+id/btnUploadImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload Book Image" />
+
+    <!-- Image Preview -->
+    <ImageView
+        android:id="@+id/imgBookPreview"
+        android:layout_width="200dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="10dp"/>
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/btnSubmitBook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit Book" />
+</LinearLayout>

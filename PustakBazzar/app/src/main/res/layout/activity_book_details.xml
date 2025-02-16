@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Book Image -->
+    <ImageView
+        android:id="@+id/imgBook"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="Book Image" />
+
+    <!-- Book Title -->
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Book Title"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Author Name -->
+    <TextView
+        android:id="@+id/textAuthor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Author: Author Name"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Price -->
+    <TextView
+        android:id="@+id/textPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Price: ₹100"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Book Description -->
+    <TextView
+        android:id="@+id/textDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Book Description"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Seller Contact -->
+    <TextView
+        android:id="@+id/textSellerContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seller Contact: +91 9876543210"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Contact Seller Button -->
+    <Button
+        android:id="@+id/btnContactSeller"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contact Seller"
+        android:background="?attr/colorPrimary"
+        android:textColor="#FFFFFF" />
+
+</LinearLayout>
