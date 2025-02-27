@@ -30,6 +30,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    buildFeatures{
+        viewBinding=true
+    }
 }
 
 dependencies {
@@ -46,4 +49,9 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation ("com.squareup.picasso:picasso:2.8")
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+    // for rating
+    implementation ("com.google.android.play:review:2.0.2")
+    // for inapp rating
+
 }

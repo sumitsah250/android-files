@@ -1,7 +1,9 @@
 package com.boss.pustakbazzar;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -9,11 +11,9 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 public class BookDetailsActivity extends AppCompatActivity {
@@ -22,12 +22,14 @@ public class BookDetailsActivity extends AppCompatActivity {
     private Button btnContactSeller;
     private FirebaseFirestore db;
     private String bookId, sellerEmail;
+    private Dialog progressDialog; // Progress Dialog
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_book_details);
+
         imgBook = findViewById(R.id.imgBook);
         textTitle = findViewById(R.id.textTitle);
         textAuthor = findViewById(R.id.textAuthor);
@@ -37,6 +39,8 @@ public class BookDetailsActivity extends AppCompatActivity {
         btnContactSeller = findViewById(R.id.btnContactSeller);
 
         db = FirebaseFirestore.getInstance();
+
+        initProgressDialog(); // Initialize Progress Dialog
 
         // Get the bookId from intent
         bookId = getIntent().getStringExtra("bookId");
@@ -50,6 +54,9 @@ public class BookDetailsActivity extends AppCompatActivity {
     }
 
     private void loadBookDetails(String bookId) {
+        progressDialog.show(); // Show progress dialog while loading details
+        btnContactSeller.setText("Wait..."); // Change button text to "Wait"
+
         db.collection("books").document(bookId).get()
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
@@ -67,11 +74,39 @@ public class BookDetailsActivity extends AppCompatActivity {
                         textDescription.setText(description);
                         textSellerContact.setText("Seller Contact: " + sellerContact);
 
-                        // Load the book image using Picasso
-                        Picasso.get().load(imageUrl).into(imgBook);
+                        // Load book image with progress dialog
+                        loadImageWithProgress(imageUrl);
+                    } else {
+                        progressDialog.dismiss();
+                        btnContactSeller.setText("Contact Seller"); // Restore button text
+                        Toast.makeText(this, "Book details not found!", Toast.LENGTH_SHORT).show();
                     }
                 })
-                .addOnFailureListener(e -> Toast.makeText(this, "Error loading book details!", Toast.LENGTH_SHORT).show());
+                .addOnFailureListener(e -> {
+                    progressDialog.dismiss();
+                    btnContactSeller.setText("Contact Seller"); // Restore button text
+                    Toast.makeText(this, "Error loading book details!", Toast.LENGTH_SHORT).show();
+                });
+    }
+
+    private void loadImageWithProgress(String imageUrl) {
+        progressDialog.show(); // Show progress dialog before loading image
+
+        Picasso.get().load(imageUrl)
+                .into(imgBook, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        progressDialog.dismiss(); // Dismiss progress dialog when image is loaded
+                        btnContactSeller.setText("Contact Seller"); // Restore button text
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+                        progressDialog.dismiss();
+                        btnContactSeller.setText("Contact Seller"); // Restore button text
+                        Toast.makeText(BookDetailsActivity.this, "Failed to load image!", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     // Method to contact the seller via email
@@ -90,5 +125,15 @@ public class BookDetailsActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Seller contact unavailable!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    // Initialize Progress Dialog
+    private void initProgressDialog() {
+        progressDialog = new Dialog(this);
+        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        progressDialog.setContentView(R.layout.custom_progress_dialog);
+        progressDialog.setCancelable(false);
+        TextView progressText = progressDialog.findViewById(R.id.progress_text);
+        progressText.setText("Loading..."); // Set the text to "Loading..."
     }
 }

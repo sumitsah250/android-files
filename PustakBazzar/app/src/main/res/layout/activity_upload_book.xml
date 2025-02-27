@@ -2,60 +2,117 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="20dp"
+    android:background="#F9F9F9"
+    android:gravity="center">
 
     <!-- Book Title -->
-    <EditText
-        android:id="@+id/etBookTitle"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Book Title" />
+        android:layout_marginBottom="16dp"
+        android:hint="Book Title"
+        android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBookTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/darker_gray"
+            android:textColorHint="@android:color/black"
+            android:textColor="@android:color/black"
+            android:padding="12dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Book Author -->
-    <EditText
-        android:id="@+id/etBookAuthor"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Author Name" />
+        android:layout_marginBottom="16dp"
+        android:hint="Author Name"
+        android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBookAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/darker_gray"
+            android:textColorHint="@android:color/black"
+            android:textColor="@android:color/black"
+            android:padding="12dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Book Price -->
-    <EditText
-        android:id="@+id/etBookPrice"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:hint="Price (₹)"
-        android:inputType="numberDecimal" />
+        android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBookPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:backgroundTint="@android:color/darker_gray"
+            android:textColorHint="@android:color/black"
+            android:textColor="@android:color/black"
+            android:padding="12dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Book Description -->
-    <EditText
-        android:id="@+id/etBookDescription"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:hint="Description"
-        android:inputType="textMultiLine"
-        android:gravity="top|start"
-        android:lines="4" />
+        android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBookDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:gravity="top|start"
+            android:lines="4"
+            android:backgroundTint="@android:color/darker_gray"
+            android:textColorHint="@android:color/black"
+            android:textColor="@android:color/black"
+            android:padding="12dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Upload Book Image -->
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnUploadImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Upload Book Image" />
+        android:text="Upload Book Image"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#6200EE"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        />
 
     <!-- Image Preview -->
     <ImageView
         android:id="@+id/imgBookPreview"
         android:layout_width="200dp"
-        android:layout_height="250dp"
+        android:layout_height="180dp"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="16dp"
+        />
 
     <!-- Submit Button -->
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSubmitBook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit Book" />
+        android:text="Submit Book"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#6200EE"
+        android:padding="12dp"
+       />
 </LinearLayout>

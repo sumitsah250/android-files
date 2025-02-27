@@ -28,11 +28,11 @@ public class activity_login extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
         auth = FirebaseAuth.getInstance();
-//        if(auth.getCurrentUser() !=null){
-//            startActivity(new Intent(activity_login.this,MainActivity.class));
-//            finish();
-//
-//        }
+        if(auth.getCurrentUser() !=null){
+            startActivity(new Intent(activity_login.this,MainActivity.class));
+            finish();
+
+        }
 
         btnLogin.setOnClickListener(v -> loginUser());
         findViewById(R.id.tvRegister).setOnClickListener(v -> {
