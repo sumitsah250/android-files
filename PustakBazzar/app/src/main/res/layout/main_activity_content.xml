@@ -15,24 +15,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:padding="2dp"
+        android:gravity="center"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/toggle"
-            android:layout_width="?actionBarSize"
-            android:layout_height="?actionBarSize"
-            android:background="@android:color/transparent"
-            android:src="@drawable/menu_alt_2_svgrepo_com" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_margin="4dp"
+            app:borderWidth="1dp"
+            android:padding="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/menu_alt_2_svgrepo_com"
+            />
 
         <EditText
-
             android:id="@+id/searchBox"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:drawable/edit_text"
-            android:hint="Search books..."
+            android:layout_height="wrap_content"
+            android:background="@drawable/searchbox_background"
+            android:hint="    Search books..."
             android:padding="4dp"
-            android:textSize="14sp"
+            android:drawableEnd="@drawable/search_alt_2_svgrepo_com"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent" />
 
 
@@ -48,15 +57,65 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnUploadImage"
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/btnUploadImage"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Sell Book"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sell Book"
-        android:textSize="24sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnUploadImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/appcombat_button_background"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            app:tint="@color/white"
+            android:src="@drawable/button_sell_svgrepo_com"
+            app:layout_constraintBottom_toTopOf="@+id/appCompatButtonWishList"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </ImageButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/appCompatMyBooks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:background="@drawable/remaining_completed_background"
+
+            android:padding="16dp"
+            android:text="My Books"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnUploadImage" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/appCompatButtonWishList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:background="@drawable/remaining_completed_background"
+            android:padding="16dp"
+            android:text="WishList"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnUploadImage" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
