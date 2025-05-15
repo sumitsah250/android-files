@@ -54,4 +54,14 @@ dependencies {
     implementation ("com.google.android.play:review:2.0.2")
     // for inapp rating
 
+    //for osm integration
+    implementation ("org.osmdroid:osmdroid-android:6.1.16")
+    implementation ("org.osmdroid:osmdroid-wms:6.1.16")
+    //for osm integration
+
+    //for location
+    implementation ("com.google.android.gms:play-services-location:21.0.1")
+
+    //for location
+
 }

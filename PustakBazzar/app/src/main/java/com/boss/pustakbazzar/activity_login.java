@@ -38,6 +38,21 @@ public class activity_login extends AppCompatActivity {
         findViewById(R.id.tvRegister).setOnClickListener(v -> {
             startActivity(new Intent(this, RegisterActivity.class));
         });
+        findViewById(R.id.tvForgotPassword).setOnClickListener(v -> {
+            String email = etEmail.getText().toString().trim();
+            if (email.isEmpty()) {
+//                Toast.makeText(this, "Enter your email first", Toast.LENGTH_SHORT).show();
+                etEmail.setError("Enter your email first");
+                return;
+            }
+
+            auth.sendPasswordResetEmail(email)
+                    .addOnSuccessListener(unused ->
+                            Toast.makeText(this, "Reset link sent to your email", Toast.LENGTH_LONG).show())
+                    .addOnFailureListener(e ->
+//                            Toast.makeText(this, "Failed to send reset email: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                           etEmail.setError("Failed to send reset email: " + e.getMessage()));
+        });
 
     }
 

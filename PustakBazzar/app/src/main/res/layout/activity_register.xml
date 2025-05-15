@@ -76,16 +76,16 @@
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="20dp"/>
 
-            <EditText
+            <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/etlocation"
+                android:id="@+id/btnlocation"
+                android:gravity="start|center_vertical"
                 android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/lock_svgrepo_com"
+                android:drawableLeft="@drawable/location_pin_svgrepo_com"
                 android:drawablePadding="8dp"
-                android:hint="Choose location"
+                android:hint="Current location"
                 android:padding="8dp"
-                android:inputType="textPassword"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="20dp"/>

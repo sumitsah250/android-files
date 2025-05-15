@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Book {
     private String id, title, author, price, imageUrl, userId;
+    private double distance; // Distance to the current user
 
     public Book() {id= String.valueOf(new Date().getTime());
     } // Required for Firebase
@@ -23,4 +24,12 @@ public class Book {
     public String getPrice() { return price; }
     public String getImageUrl() { return imageUrl; }
     public String getUserId() { return userId; }
+    // Getter and Setter methods for the distance
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
 }

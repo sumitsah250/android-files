@@ -106,7 +106,9 @@ public class MainActivity extends AppCompatActivity {
 
         bookList = new ArrayList<>();
         filteredList = new ArrayList<>();
-        adapter = new BookAdapter(filteredList, this);
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String currentUserId = auth.getCurrentUser().getUid();
+        adapter = new BookAdapter(filteredList, MainActivity.this,currentUserId);
         binding.recyclerView.setAdapter(adapter);
 
         db = FirebaseFirestore.getInstance();

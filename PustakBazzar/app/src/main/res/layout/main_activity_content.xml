@@ -25,7 +25,7 @@
             android:src="@drawable/menu_alt_2_svgrepo_com" />
 
         <EditText
-            android:textColor="bka"
+
             android:id="@+id/searchBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
