@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+   >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_margin="4dp"
+            app:borderWidth="1dp"
+            android:padding="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_arrow_back_24"
+            android:backgroundTint="@color/white"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Profile Setup"
+            android:gravity="center"
+            android:textSize="34sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            >
+
+        </TextView>
+
+    </LinearLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_height="240dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/edit_profile_pic"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:maxWidth="240dp"
+            android:maxHeight="240dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile_main"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+        <ImageView
+            android:id="@+id/edt_change_image"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/edit_svgrepo_com"
+            android:foregroundGravity="center"
+            android:src="@drawable/edit_svgrepo_com"
+            app:tint="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        </ImageView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="12dp"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/etName"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/person_svgrepo_com"
+            android:drawablePadding="8dp"
+            android:hint="Change Name"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background"
+            android:layout_marginTop="40dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/edtcontact"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/contact_svgrepo_com"
+            android:drawablePadding="8dp"
+            android:hint="Contact Number"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            android:textColorHighlight="@color/cardview_dark_background"
+          />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/btnlocation"
+            android:gravity="start|center_vertical"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/location_pin_svgrepo_com"
+            android:drawablePadding="8dp"
+            android:hint="Current Location"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnsave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:background="@drawable/add_button"
+        android:padding="20dp"
+        android:text="SAVE"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+
+        tools:layout_editor_absoluteX="18dp">
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+
+</LinearLayout>

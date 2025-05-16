@@ -126,7 +126,7 @@ public class UploadBookActivity extends AppCompatActivity {
             Bitmap originalBitmap = BitmapFactory.decodeStream(inputStream);
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            originalBitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos); // Compress to 50% quality
+            originalBitmap.compress(Bitmap.CompressFormat.JPEG, 40, baos); // Compress to 50% quality
             byte[] compressedData = baos.toByteArray();
 
             StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("book_images").child(bookId);

@@ -1,68 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="12dp"
+    android:layout_gravity="center"
+    app:cardElevation="8dp">
 
-    <!-- Book Image -->
-    <ImageView
-        android:id="@+id/imgBook"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginBottom="16dp"
-        android:scaleType="centerCrop"
-        android:contentDescription="Book Image" />
-
-    <!-- Book Title -->
-    <TextView
-        android:id="@+id/textTitle"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="Book Title"
-        android:layout_marginBottom="8dp" />
+        android:padding="16dp">
 
-    <!-- Author Name -->
-    <TextView
-        android:id="@+id/textAuthor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Author: Author Name"
-        android:layout_marginBottom="8dp" />
+        <ImageButton
+            android:id="@+id/btnback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_back_background"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/baseline_arrow_back_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="10dp"
+            app:tint="@color/white">
 
-    <!-- Price -->
-    <TextView
-        android:id="@+id/textPrice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Price: ₹100"
-        android:layout_marginBottom="8dp" />
+        </ImageButton>
 
-    <!-- Book Description -->
-    <TextView
-        android:id="@+id/textDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Book Description"
-        android:layout_marginBottom="16dp" />
+        <!-- Book Image -->
+        <ImageView
+            android:id="@+id/imgBook"
+            android:layout_width="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_height="200dp"
+            android:contentDescription="Book Image"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnback" />
 
-    <!-- Seller Contact -->
-    <TextView
-        android:id="@+id/textSellerContact"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Seller Contact: +91 9876543210"
-        android:layout_marginBottom="16dp" />
+        <!-- Book Title -->
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Book Title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#222222"
+            app:layout_constraintTop_toBottomOf="@id/imgBook"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp" />
 
-    <!-- Contact Seller Button -->
-    <Button
-        android:id="@+id/btnContactSeller"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Contact Seller"
-        android:background="?attr/colorPrimary"
-        android:textColor="#FFFFFF" />
+        <!-- Author Name -->
+        <TextView
+            android:id="@+id/textAuthor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Author: Author Name"
+            android:textSize="14sp"
+            android:textColor="#555555"
+            app:layout_constraintTop_toBottomOf="@id/textTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="4dp" />
 
-</LinearLayout>
+        <!-- Price -->
+        <TextView
+            android:id="@+id/textPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Price: ₹100"
+            android:textColor="#444444"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/textAuthor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="4dp" />
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/textDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="This is a great book on Android development."
+            android:textColor="#666666"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/textPrice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnContactSeller"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Contact Seller"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/appcombat_button_background"
+            app:layout_constraintTop_toBottomOf="@id/textDescription"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="16dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

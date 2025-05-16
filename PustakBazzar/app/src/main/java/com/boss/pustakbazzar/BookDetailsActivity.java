@@ -3,8 +3,10 @@ package com.boss.pustakbazzar;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,11 +20,13 @@ import com.squareup.picasso.Picasso;
 
 public class BookDetailsActivity extends AppCompatActivity {
     private ImageView imgBook;
-    private TextView textTitle, textAuthor, textPrice, textDescription, textSellerContact;
+    private TextView textTitle, textAuthor, textPrice, textDescription;
     private Button btnContactSeller;
+    ImageButton btnback;
     private FirebaseFirestore db;
     private String bookId, sellerEmail;
     private Dialog progressDialog; // Progress Dialog
+    String userid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +39,8 @@ public class BookDetailsActivity extends AppCompatActivity {
         textAuthor = findViewById(R.id.textAuthor);
         textPrice = findViewById(R.id.textPrice);
         textDescription = findViewById(R.id.textDescription);
-        textSellerContact = findViewById(R.id.textSellerContact);
+        btnback=findViewById(R.id.btnback);
+
         btnContactSeller = findViewById(R.id.btnContactSeller);
 
         db = FirebaseFirestore.getInstance();
@@ -51,6 +56,12 @@ public class BookDetailsActivity extends AppCompatActivity {
 
         // When the "Contact Seller" button is clicked, open email client
         btnContactSeller.setOnClickListener(v -> contactSeller());
+        btnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void loadBookDetails(String bookId) {
@@ -67,12 +78,12 @@ public class BookDetailsActivity extends AppCompatActivity {
                         String imageUrl = documentSnapshot.getString("imageUrl");
                         sellerEmail = documentSnapshot.getString("sellerEmail");
                         String sellerContact = documentSnapshot.getString("sellerContact");
+                        userid=documentSnapshot.getString("userId");
 
                         textTitle.setText(title);
                         textAuthor.setText("Author: " + author);
                         textPrice.setText("Price: ₹" + price);
                         textDescription.setText(description);
-                        textSellerContact.setText("Seller Contact: " + sellerContact);
 
                         // Load book image with progress dialog
                         loadImageWithProgress(imageUrl);
@@ -111,20 +122,27 @@ public class BookDetailsActivity extends AppCompatActivity {
 
     // Method to contact the seller via email
     private void contactSeller() {
-        if (sellerEmail != null) {
-            Intent emailIntent = new Intent(Intent.ACTION_SEND);
-            emailIntent.setType("message/rfc822");
-            emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{sellerEmail});
-            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Inquiry about your book");
-            emailIntent.putExtra(Intent.EXTRA_TEXT, "Hello, I'm interested in buying your book. Please let me know the details.");
-            try {
-                startActivity(Intent.createChooser(emailIntent, "Send Email"));
-            } catch (android.content.ActivityNotFoundException ex) {
-                Toast.makeText(this, "No email client installed.", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            Toast.makeText(this, "Seller contact unavailable!", Toast.LENGTH_SHORT).show();
-        }
+        Intent intent = new Intent(BookDetailsActivity.this, SellerDetails.class);
+        intent.putExtra("userid", userid); // send string
+
+        startActivity(intent);
+
+
+
+//        if (sellerEmail != null) {
+//            Intent emailIntent = new Intent(Intent.ACTION_SEND);
+//            emailIntent.setType("message/rfc822");
+//            emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{sellerEmail});
+//            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Inquiry about your book");
+//            emailIntent.putExtra(Intent.EXTRA_TEXT, "Hello, I'm interested in buying your book. Please let me know the details.");
+//            try {
+//                startActivity(Intent.createChooser(emailIntent, "Send Email"));
+//            } catch (android.content.ActivityNotFoundException ex) {
+//                Toast.makeText(this, "No email client installed.", Toast.LENGTH_SHORT).show();
+//            }
+//        } else {
+//            Toast.makeText(this, "Seller contact unavailable!", Toast.LENGTH_SHORT).show();
+//        }
     }
 
     // Initialize Progress Dialog

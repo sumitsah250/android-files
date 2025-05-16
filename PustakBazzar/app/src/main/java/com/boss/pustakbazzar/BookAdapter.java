@@ -40,7 +40,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     @NonNull
     @Override
     public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_book, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.row_item, parent, false);
         return new BookViewHolder(view);
     }
 
@@ -48,7 +48,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
         Book book = bookList.get(position);
         holder.textTitle.setText(book.getTitle());
-        holder.textAuthor.setText(book.getAuthor());
+//        holder.textAuthor.setText(book.getAuthor());
         holder.textPrice.setText("₹" + book.getPrice());
         Picasso.get().load(book.getImageUrl()).into(holder.imgBook);
 
@@ -62,7 +62,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
                     public void onLocationFetched(double sellerLat, double sellerLng) {
                         // Calculate the distance
                         double distance = calculateDistance(currentUserLat, currentUserLng, sellerLat, sellerLng);
-                        holder.textDistance.setText(String.format("%.1f km away", distance));
+                        holder.textDistance.setText(String.format("📍%.1f km", distance));
 
                         // Add distance to the book object (optional, for sorting purposes)
                         book.setDistance(distance);

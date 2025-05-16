@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -18,11 +20,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.boss.pustakbazzar.databinding.ActivityMainBinding;
 import com.boss.pustakbazzar.databinding.MainActivityContentBinding;
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.play.core.review.ReviewInfo;
@@ -31,9 +35,12 @@ import com.google.android.play.core.review.ReviewManagerFactory;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding1;
@@ -44,7 +51,14 @@ public class MainActivity extends AppCompatActivity {
 
     private BookAdapter adapter;
     private List<Book> bookList, filteredList;
+
+    private FirebaseAuth auth;
     private FirebaseFirestore db;
+    private FirebaseStorage storage;
+    private String userId;
+    View headerView;
+    CircleImageView profileImage;
+    TextView username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +66,27 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         binding1 = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding1.getRoot());
+
+        // Get header view from NavigationView
+        headerView = binding1.navigationView.getHeaderView(0);
+        //for profile circular image
+        //for header profile picture
+        auth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+        storage = FirebaseStorage.getInstance();
+
+        userId = auth.getCurrentUser().getUid();
+        //for header profile picture
+        profileImage=headerView.findViewById(R.id.profileimage);
+        username=headerView.findViewById(R.id.username);
+        loadUserProfile();
+        ///for profile circular image
+        headerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,UserProfile.class));
+            }
+        });
 
         // for the side menu
         binding1.navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -86,10 +121,13 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-        // for the side menu
+
+
+
 
 
         binding = MainActivityContentBinding.bind(binding1.includedLayout.getRoot());
+
 
         binding.toggle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
 //        recyclerView = findViewById(R.id.recyclerView);
 //        btnGoToUpload = findViewById(R.id.btnUploadImage);
 
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
 
         bookList = new ArrayList<>();
         filteredList = new ArrayList<>();
@@ -209,4 +247,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // for side menu
+
+    private void loadUserProfile() {
+
+        db.collection("users").document(userId).get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        username.setText(documentSnapshot.getString("name"));
+
+
+                        String imageUrl = documentSnapshot.getString("profileImage");
+                        if (imageUrl != null && !imageUrl.isEmpty()) {
+                            Glide.with(this).load(imageUrl).into(profileImage);
+                        }
+                    }
+                });
+    }
 }
