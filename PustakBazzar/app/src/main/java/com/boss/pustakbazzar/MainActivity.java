@@ -28,6 +28,7 @@ import com.boss.pustakbazzar.databinding.ActivityMainBinding;
 import com.boss.pustakbazzar.databinding.MainActivityContentBinding;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
@@ -38,6 +39,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -184,16 +187,60 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadBooks() {
-        db.collection("books").get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String currentUserId = auth.getCurrentUser().getUid();
+
+        // Step 1: Get current user's location
+        db.collection("users").document(currentUserId).get().addOnSuccessListener(userDoc -> {
+            if (userDoc.exists()) {
+                double currentLat = userDoc.getDouble("latitude");
+                double currentLng = userDoc.getDouble("longitude");
+
+                // Step 2: Fetch all books
+                db.collection("books").get().addOnSuccessListener(bookDocs -> {
                     bookList.clear();
-                    for (DocumentSnapshot doc : queryDocumentSnapshots) {
+                    List<Book> tempList = new ArrayList<>();
+
+                    for (DocumentSnapshot doc : bookDocs) {
                         Book book = doc.toObject(Book.class);
-                        bookList.add(book);
+                        tempList.add(book);
                     }
-                    filterBooks(binding.searchBox.getText().toString()); // Apply filter when data is loaded
-                })
-                .addOnFailureListener(e -> Toast.makeText(this, "Error loading books!", Toast.LENGTH_SHORT).show());
+
+                    // Step 3: For each book, get seller location and calculate distance
+                    List<Task<Void>> tasks = new ArrayList<>();
+                    for (Book book : tempList) {
+                        Task<DocumentSnapshot> sellerTask = db.collection("users")
+                                .document(book.getUserId())
+                                .get();
+
+                        Task<Void> task = sellerTask.addOnSuccessListener(sellerDoc -> {
+                            if (sellerDoc.exists()) {
+                                double sellerLat = sellerDoc.getDouble("latitude");
+                                double sellerLng = sellerDoc.getDouble("longitude");
+
+                                double distance = calculateDistance(currentLat, currentLng, sellerLat, sellerLng);
+                                book.setDistance(distance);
+                            } else {
+                                book.setDistance(Double.MAX_VALUE); // Default if seller data missing
+                            }
+                        }).continueWith(t -> null);
+
+                        tasks.add(task);
+                    }
+
+                    // Step 4: When all distance calculations are done
+                    Tasks.whenAll(tasks).addOnSuccessListener(t -> {
+                        // Step 5: Sort and show
+                        Collections.sort(tempList, Comparator.comparingDouble(Book::getDistance));
+                        bookList.addAll(tempList);
+                        filterBooks(binding.searchBox.getText().toString()); // Apply search filter
+                    });
+
+                });
+
+            }
+        }).addOnFailureListener(e -> Toast.makeText(this, "Error loading user location!", Toast.LENGTH_SHORT).show());
     }
 
     private void filterBooks(String query) {
@@ -274,5 +321,10 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    private double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+        float[] results = new float[1];
+        android.location.Location.distanceBetween(lat1, lon1, lat2, lon2, results);
+        return results[0] / 1000.0; // in kilometers
     }
 }

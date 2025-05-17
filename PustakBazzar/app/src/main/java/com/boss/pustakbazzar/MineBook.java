@@ -19,6 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MineBook extends AppCompatActivity {
@@ -66,23 +67,64 @@ public class MineBook extends AppCompatActivity {
 
     }
     private void loadBooks() {
-        db.collection("books")
-                .whereEqualTo("userId", userId) // Match only books uploaded by current user
-                .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
-                    bookList.clear();
-                    for (DocumentSnapshot doc : queryDocumentSnapshots) {
-                        Book book = doc.toObject(Book.class);
-                        bookList.add(book);
-                    }
+        String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                    filteredList.clear();
-                    filteredList.addAll(bookList);
-                    adapter.notifyDataSetChanged();
-                })
-                .addOnFailureListener(e ->
-                        Toast.makeText(this, "Error loading books!", Toast.LENGTH_SHORT).show()
-                );
+        // Fetch current user's location first
+        db.collection("users").document(currentUserId).get().addOnSuccessListener(userDoc -> {
+            if (userDoc.exists()) {
+                double currentLat = userDoc.getDouble("latitude");
+                double currentLng = userDoc.getDouble("longitude");
+
+                // Query only books uploaded by current user
+                db.collection("books")
+                        .whereEqualTo("userId", currentUserId)
+                        .get()
+                        .addOnSuccessListener(queryDocumentSnapshots -> {
+                            bookList.clear();
+
+                            final int totalBooks = queryDocumentSnapshots.size();
+                            final int[] processedCount = {0};
+
+                            for (DocumentSnapshot doc : queryDocumentSnapshots) {
+                                Book book = doc.toObject(Book.class);
+
+                                // Since seller is current user, use current location for both points
+                                double distance = calculateDistance(currentLat, currentLng, currentLat, currentLng);
+                                book.setDistance(distance);
+
+                                bookList.add(book);
+
+                                processedCount[0]++;
+                                if (processedCount[0] == totalBooks) {
+                                    // Sort books by distance (all zero actually)
+                                    Collections.sort(bookList, (b1, b2) -> Double.compare(b1.getDistance(), b2.getDistance()));
+
+                                    filteredList.clear();
+                                    filteredList.addAll(bookList);
+                                    adapter.notifyDataSetChanged();
+                                }
+                            }
+
+                            // Handle case: no books found
+                            if (totalBooks == 0) {
+                                filteredList.clear();
+                                adapter.notifyDataSetChanged();
+                            }
+
+                        })
+                        .addOnFailureListener(e -> Toast.makeText(this, "Error loading books!", Toast.LENGTH_SHORT).show());
+
+            } else {
+                Toast.makeText(this, "User location not found", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(e -> Toast.makeText(this, "Failed to get user location", Toast.LENGTH_SHORT).show());
+    }
+
+    // Method to calculate distance between two lat/lng points (reuse your adapter's method)
+    private double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+        float[] results = new float[1];
+        android.location.Location.distanceBetween(lat1, lon1, lat2, lon2, results);
+        return results[0] / 1000.0; // km
     }
 
 }

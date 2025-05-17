@@ -18,6 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class WishList_activity extends AppCompatActivity {
@@ -80,40 +81,119 @@ public class WishList_activity extends AppCompatActivity {
                         return;
                     }
 
-                    // Firestore supports a maximum of 10 elements in whereIn()
-                    List<List<String>> chunks = chunkList(wishlist, 10);
+                    // Fetch current user's location first
+                    Double currentLat = userSnapshot.getDouble("latitude");
+                    Double currentLng = userSnapshot.getDouble("longitude");
 
-                    bookList.clear(); // Clear existing data
+                    if (currentLat == null || currentLng == null) {
+                        Toast.makeText(this, "User location not available.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    List<List<String>> chunks = chunkList(wishlist, 10);
+                    bookList.clear();
+
+                    // To handle all async tasks counting
+                    final int totalChunks = chunks.size();
+                    final int[] chunksProcessed = {0};
 
                     for (List<String> chunk : chunks) {
                         FirebaseFirestore.getInstance().collection("books")
-                                .whereIn("id", chunk)  // Ensure each book has a `bookId` field
+                                .whereIn("id", chunk)
                                 .get()
                                 .addOnSuccessListener(querySnapshots -> {
-                                    for (DocumentSnapshot doc : querySnapshots) {
-                                        Book book = doc.toObject(Book.class);
-                                        bookList.add(book);
+                                    List<Book> chunkBooks = new ArrayList<>();
+
+                                    final int totalBooksInChunk = querySnapshots.size();
+                                    final int[] booksProcessed = {0};
+
+                                    if (totalBooksInChunk == 0) {
+                                        // If no books in this chunk, update chunksProcessed
+                                        chunksProcessed[0]++;
+                                        checkAndUpdateAdapter(chunksProcessed[0], totalChunks);
+                                        return;
                                     }
 
-                                    filteredList.clear();
-                                    filteredList.addAll(bookList);
-                                    adapter.notifyDataSetChanged();
+                                    for (DocumentSnapshot doc : querySnapshots) {
+                                        Book book = doc.toObject(Book.class);
+
+                                        // Fetch seller location
+                                        FirebaseFirestore.getInstance().collection("users").document(book.getUserId())
+                                                .get()
+                                                .addOnSuccessListener(sellerDoc -> {
+                                                    if (sellerDoc.exists()) {
+                                                        Double sellerLat = sellerDoc.getDouble("latitude");
+                                                        Double sellerLng = sellerDoc.getDouble("longitude");
+
+                                                        if (sellerLat != null && sellerLng != null) {
+                                                            double distance = calculateDistance(currentLat, currentLng, sellerLat, sellerLng);
+                                                            book.setDistance(distance);
+                                                        } else {
+                                                            book.setDistance(Double.MAX_VALUE);
+                                                        }
+                                                    } else {
+                                                        book.setDistance(Double.MAX_VALUE);
+                                                    }
+
+                                                    chunkBooks.add(book);
+                                                    booksProcessed[0]++;
+
+                                                    if (booksProcessed[0] == totalBooksInChunk) {
+                                                        bookList.addAll(chunkBooks);
+                                                        chunksProcessed[0]++;
+                                                        checkAndUpdateAdapter(chunksProcessed[0], totalChunks);
+                                                    }
+                                                })
+                                                .addOnFailureListener(e -> {
+                                                    book.setDistance(Double.MAX_VALUE);
+                                                    chunkBooks.add(book);
+                                                    booksProcessed[0]++;
+
+                                                    if (booksProcessed[0] == totalBooksInChunk) {
+                                                        bookList.addAll(chunkBooks);
+                                                        chunksProcessed[0]++;
+                                                        checkAndUpdateAdapter(chunksProcessed[0], totalChunks);
+                                                    }
+                                                });
+                                    }
                                 })
-                                .addOnFailureListener(e ->
-                                        Toast.makeText(this, "Error loading wishlist books!", Toast.LENGTH_SHORT).show());
+                                .addOnFailureListener(e -> {
+                                    Toast.makeText(this, "Error loading wishlist books!", Toast.LENGTH_SHORT).show();
+                                    chunksProcessed[0]++;
+                                    checkAndUpdateAdapter(chunksProcessed[0], totalChunks);
+                                });
                     }
                 })
                 .addOnFailureListener(e ->
                         Toast.makeText(this, "Failed to load wishlist!", Toast.LENGTH_SHORT).show());
+    }
 
+    // Helper to check if all chunks processed then update UI
+    private void checkAndUpdateAdapter(int chunksDone, int totalChunks) {
+        if (chunksDone == totalChunks) {
+            // Sort books by distance ascending
+            Collections.sort(bookList, (b1, b2) -> Double.compare(b1.getDistance(), b2.getDistance()));
 
-}
+            filteredList.clear();
+            filteredList.addAll(bookList);
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    // Your existing chunkList method remains unchanged
     private List<List<String>> chunkList(List<String> list, int chunkSize) {
         List<List<String>> chunks = new ArrayList<>();
         for (int i = 0; i < list.size(); i += chunkSize) {
             chunks.add(new ArrayList<>(list.subList(i, Math.min(i + chunkSize, list.size()))));
         }
         return chunks;
+    }
+
+    // Distance calculation (reuse)
+    private double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+        float[] results = new float[1];
+        android.location.Location.distanceBetween(lat1, lon1, lat2, lon2, results);
+        return results[0] / 1000.0; // kilometers
     }
 
 

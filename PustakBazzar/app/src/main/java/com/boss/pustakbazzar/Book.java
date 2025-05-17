@@ -6,7 +6,7 @@ public class Book {
     private String id, title, author, price, imageUrl, userId;
     private double distance; // Distance to the current user
 
-    public Book() {id= String.valueOf(new Date().getTime());
+    public Book() {//id= String.valueOf(new Date().getTime());
     } // Required for Firebase
 
     public Book(String id, String title, String author, String price, String imageUrl, String userId) {
