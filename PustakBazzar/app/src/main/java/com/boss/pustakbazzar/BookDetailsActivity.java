@@ -3,11 +3,13 @@ package com.boss.pustakbazzar;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +24,8 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import android.view.ViewGroup;
+import android.view.Gravity;
 
 public class BookDetailsActivity extends AppCompatActivity {
     private ImageView imgBook;
@@ -71,6 +75,29 @@ public class BookDetailsActivity extends AppCompatActivity {
             }
         });
         checkIfBookInWishlist(bookId);
+
+
+        imgBook.setOnClickListener(v -> {
+            // Inflate the popup layout
+            LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+            View popupView = inflater.inflate(R.layout.popup_image, null);
+
+            // Get the image view inside popup
+            ImageView imgPopup = popupView.findViewById(R.id.imgPopup);
+            imgPopup.setImageDrawable(imgBook.getDrawable()); // use same image
+
+            // Create the PopupWindow
+            final PopupWindow popupWindow = new PopupWindow(popupView,
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    true);
+
+            // Show the popup window
+            popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+
+            // Dismiss the popup when the image is touched
+            popupView.setOnClickListener(view -> popupWindow.dismiss());
+        });
     }
 
     private void loadBookDetails(String bookId) {
