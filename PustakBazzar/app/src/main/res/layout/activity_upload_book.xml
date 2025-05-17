@@ -1,10 +1,49 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="20dp"
     android:background="#F9F9F9"
-    android:gravity="center">
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+        >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Profile Setup"
+            android:gravity="center"
+            android:textSize="34sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            >
+
+        </TextView>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_margin="4dp"
+            app:borderWidth="1dp"
+            android:padding="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_arrow_back_24"
+            android:backgroundTint="@color/white"
+            />
+
+    </RelativeLayout>
+
+
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -75,7 +114,7 @@
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:gravity="top|start"
-            android:lines="4"
+            android:lines="3"
             android:backgroundTint="@android:color/darker_gray"
             android:textColorHint="@android:color/black"
             android:textColor="@android:color/black"
@@ -97,11 +136,10 @@
     <!-- Image Preview -->
     <ImageView
         android:id="@+id/imgBookPreview"
-        android:layout_width="200dp"
-        android:layout_height="180dp"
+        android:layout_width="300dp"
+        android:layout_height="160dp"
         android:src="@drawable/book_open_svgrepo_com"
         android:layout_gravity="center"
-        android:scaleType="centerCrop"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="16dp"
         />

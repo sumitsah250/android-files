@@ -49,7 +49,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         Book book = bookList.get(position);
         holder.textTitle.setText(book.getTitle());
 //        holder.textAuthor.setText(book.getAuthor());
-        holder.textPrice.setText("₹" + book.getPrice());
+        holder.textPrice.setText("Rs." + book.getPrice());
         Picasso.get().load(book.getImageUrl()).into(holder.imgBook);
 
         // Fetch current user's location

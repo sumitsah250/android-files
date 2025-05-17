@@ -82,7 +82,7 @@ public class BookDetailsActivity extends AppCompatActivity {
 
                         textTitle.setText(title);
                         textAuthor.setText("Author: " + author);
-                        textPrice.setText("Price: ₹" + price);
+                        textPrice.setText("Price: Rs." + price);
                         textDescription.setText(description);
 
                         // Load book image with progress dialog

@@ -127,6 +127,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         binding = MainActivityContentBinding.bind(binding1.includedLayout.getRoot());
+        binding.appCompatMyBooks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,MineBook.class));
+            }
+        });
 
 
         binding.toggle.setOnClickListener(new View.OnClickListener() {

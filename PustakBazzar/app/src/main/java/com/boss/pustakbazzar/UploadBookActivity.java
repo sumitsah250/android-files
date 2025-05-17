@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
@@ -63,8 +64,13 @@ public class UploadBookActivity extends AppCompatActivity {
 
         btnUploadImage.setOnClickListener(v -> openImagePicker());
         btnSubmitBook.setOnClickListener(v -> submitBookDetails());
-
         initProgressDialog();
+        findViewById(R.id.btnback).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void openImagePicker() {

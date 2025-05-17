@@ -2,5 +2,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
     <solid android:color="@color/black" /> <!-- Dark gray background -->
     <corners android:radius="8dp" /> <!-- Rounded corners -->
-    <stroke android:width="3dp" android:color="#D81B60" /> <!-- Border (optional) -->
+    <stroke android:width="3dp" android:color="#039BE5" /> <!-- Border (optional) -->
 </shape>

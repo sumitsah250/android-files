@@ -96,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="0dp"
-            android:background="@drawable/remaining_completed_background"
+            android:background="@drawable/mybookbackground"
 
             android:padding="16dp"
             android:text="My Books"
