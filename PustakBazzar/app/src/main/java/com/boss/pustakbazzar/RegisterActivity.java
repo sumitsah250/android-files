@@ -25,6 +25,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -125,6 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
                     user.put("userId", userId);
                     user.put("latitude", userLatitude);
                     user.put("longitude", userLongitude);
+                    user.put("wishlist", new ArrayList<String>());
 
                     db.collection("users").document(userId).set(user)
                             .addOnSuccessListener(aVoid -> {

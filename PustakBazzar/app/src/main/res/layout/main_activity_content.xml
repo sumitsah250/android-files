@@ -54,6 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
 
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
@@ -69,46 +70,66 @@
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintStart_toStartOf="parent" />-->
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent">
 
-        <ImageButton
-            android:id="@+id/btnUploadImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/appcombat_button_background"
-            android:padding="10dp"
-            android:scaleType="centerInside"
-            app:tint="@color/white"
-            android:src="@drawable/button_sell_svgrepo_com"
-            app:layout_constraintBottom_toTopOf="@+id/appCompatButtonWishList"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+<!--        <ImageButton-->
+<!--            android:id="@+id/btnUploadImage"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/appcombat_button_background"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:scaleType="centerInside"-->
+<!--            android:src="@drawable/button_sell_svgrepo_com"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:tint="@color/white">-->
 
-        </ImageButton>
+<!--        </ImageButton>-->
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/appCompatMyBooks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="0dp"
+            android:layout_margin="10dp"
             android:background="@drawable/mybookbackground"
-
             android:padding="16dp"
             android:text="My Books"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnUploadImage" />
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnUploadImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/sell_button_background"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:text="sell"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/appCompatMyBooks"
+            app:tint="@color/white">
+
+        </androidx.appcompat.widget.AppCompatButton>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/appCompatButtonWishList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="0dp"
+            android:layout_margin="10dp"
             android:background="@drawable/remaining_completed_background"
             android:padding="16dp"
             android:text="WishList"
@@ -117,6 +138,6 @@
             app:layout_constraintStart_toEndOf="@+id/btnUploadImage" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

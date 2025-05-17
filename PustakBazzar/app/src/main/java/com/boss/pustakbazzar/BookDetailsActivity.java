@@ -14,19 +14,26 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 public class BookDetailsActivity extends AppCompatActivity {
     private ImageView imgBook;
     private TextView textTitle, textAuthor, textPrice, textDescription;
     private Button btnContactSeller;
-    ImageButton btnback;
+    ImageButton btnback,btnheart;
+
     private FirebaseFirestore db;
     private String bookId, sellerEmail;
     private Dialog progressDialog; // Progress Dialog
     String userid;
+    private boolean isImage1Displayed = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +46,8 @@ public class BookDetailsActivity extends AppCompatActivity {
         textAuthor = findViewById(R.id.textAuthor);
         textPrice = findViewById(R.id.textPrice);
         textDescription = findViewById(R.id.textDescription);
-        btnback=findViewById(R.id.btnback);
+        btnback = findViewById(R.id.btnback);
+        btnheart = findViewById(R.id.btnheart);
 
         btnContactSeller = findViewById(R.id.btnContactSeller);
 
@@ -62,6 +70,7 @@ public class BookDetailsActivity extends AppCompatActivity {
                 finish();
             }
         });
+        checkIfBookInWishlist(bookId);
     }
 
     private void loadBookDetails(String bookId) {
@@ -154,4 +163,56 @@ public class BookDetailsActivity extends AppCompatActivity {
         TextView progressText = progressDialog.findViewById(R.id.progress_text);
         progressText.setText("Loading..."); // Set the text to "Loading..."
     }
+    //for heart icon
+    private void checkIfBookInWishlist(String bookId) {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String userId = auth.getCurrentUser().getUid();
+        DocumentReference userRef = db.collection("users").document(userId);
+
+        userRef.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists()) {
+                List<String> wishlist = (List<String>) documentSnapshot.get("wishlist");
+
+                if (wishlist != null && wishlist.contains(bookId)) {
+                    isImage1Displayed = true;
+                    btnheart.setImageResource(R.drawable.heart_svgrepo_com); // already in wishlist
+                } else {
+                    isImage1Displayed = false;
+                    btnheart.setImageResource(R.drawable.heart_alt_svgrepo_com); // not in wishlist
+                }
+            } else {
+                isImage1Displayed = false;
+                btnheart.setImageResource(R.drawable.heart_alt_svgrepo_com);
+            }
+
+            // ✅ Setup click listener only after determining wishlist state
+            btnheart.setOnClickListener(view -> {
+                if (isImage1Displayed) {
+                    // Remove bookId from wishlist
+                    userRef.update("wishlist", FieldValue.arrayRemove(bookId))
+                            .addOnSuccessListener(aVoid -> {
+                                Toast.makeText(BookDetailsActivity.this, "Removed from Wishlist", Toast.LENGTH_SHORT).show();
+                                btnheart.setImageResource(R.drawable.heart_alt_svgrepo_com);
+                            })
+                            .addOnFailureListener(e ->
+                                    Toast.makeText(BookDetailsActivity.this, "Failed to remove from Wishlist", Toast.LENGTH_SHORT).show());
+                } else {
+                    // Add bookId to wishlist
+                    userRef.update("wishlist", FieldValue.arrayUnion(bookId))
+                            .addOnSuccessListener(aVoid -> {
+                                Toast.makeText(BookDetailsActivity.this, "Added to Wishlist", Toast.LENGTH_SHORT).show();
+                                btnheart.setImageResource(R.drawable.heart_svgrepo_com);
+                            })
+                            .addOnFailureListener(e ->
+                                    Toast.makeText(BookDetailsActivity.this, "Failed to add to Wishlist", Toast.LENGTH_SHORT).show());
+                }
+
+                isImage1Displayed = !isImage1Displayed;
+            });
+
+        }).addOnFailureListener(e -> {
+            Toast.makeText(BookDetailsActivity.this, "Failed to check wishlist status", Toast.LENGTH_SHORT).show();
+        });
+    }
+    //for heart icon
 }

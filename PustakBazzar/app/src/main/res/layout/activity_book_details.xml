@@ -18,17 +18,33 @@
             android:id="@+id/btnback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:background="@drawable/custom_back_background"
             android:padding="10dp"
             android:scaleType="centerInside"
             android:src="@drawable/baseline_arrow_back_24"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_margin="10dp"
             app:tint="@color/white">
 
         </ImageButton>
+
+        <ImageButton
+            android:id="@+id/btnheart"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/heart_alt_svgrepo_com"
+            app:layout_constraintBottom_toBottomOf="@+id/btnback"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnback"
+            >
+
+        </ImageButton>
+
 
         <!-- Book Image -->
         <ImageView

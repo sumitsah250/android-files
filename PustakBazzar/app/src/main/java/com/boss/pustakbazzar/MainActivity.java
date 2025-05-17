@@ -133,6 +133,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,MineBook.class));
             }
         });
+        binding.appCompatButtonWishList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,WishList_activity.class));
+            }
+        });
 
 
         binding.toggle.setOnClickListener(new View.OnClickListener() {
