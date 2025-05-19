@@ -24,6 +24,7 @@ public class activity_login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
+
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
@@ -61,7 +62,12 @@ public class activity_login extends AppCompatActivity {
         String password = etPassword.getText().toString();
 
         auth.signInWithEmailAndPassword(email, password)
-                .addOnSuccessListener(authResult -> startActivity(new Intent(this, MainActivity.class)))
-                .addOnFailureListener(e -> Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show());
+                .addOnSuccessListener(authResult -> {
+                    startActivity(new Intent(this, MainActivity.class));
+                    finish(); // This finishes the login activity
+                })
+                .addOnFailureListener(e ->
+                        Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
+                );
     }
 }

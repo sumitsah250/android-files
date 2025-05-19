@@ -64,7 +64,10 @@ public class RegisterActivity extends AppCompatActivity {
             if (locationFetched) {
                 registerUser();
             } else {
-                Toast.makeText(this, "Please fetch location first!", Toast.LENGTH_SHORT).show();
+                 userLatitude = 28.2523756;
+                 userLongitude = 83.9751857;
+                Toast.makeText(this, "Default Location Used Please Change in Profile Section!", Toast.LENGTH_LONG).show();
+                registerUser();
             }
         });
 

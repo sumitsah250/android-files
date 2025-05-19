@@ -49,7 +49,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="10dp"
         android:hint="Book Title"
         android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -67,7 +67,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="10dp"
         android:hint="Author Name"
         android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -85,12 +85,30 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:hint="Price (₹)"
+        android:layout_marginBottom="10dp"
+        android:hint=" Original Price (Rs.)"
         android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etBookPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:backgroundTint="@android:color/darker_gray"
+            android:textColorHint="@android:color/black"
+            android:textColor="@android:color/black"
+            android:padding="12dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <!-- Book Price -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="Discounted Price(Rs.)"
+        android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etDiscountedBookPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
@@ -104,7 +122,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="10dp"
         android:hint="Description"
         android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -114,7 +132,7 @@
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:gravity="top|start"
-            android:lines="3"
+            android:lines="2"
             android:backgroundTint="@android:color/darker_gray"
             android:textColorHint="@android:color/black"
             android:textColor="@android:color/black"
@@ -129,7 +147,7 @@
         android:text="Upload Book Image"
         android:textColor="#FFFFFF"
         android:backgroundTint="#6200EE"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="10dp"
         android:padding="12dp"
         />
 
@@ -137,7 +155,7 @@
     <ImageView
         android:id="@+id/imgBookPreview"
         android:layout_width="300dp"
-        android:layout_height="160dp"
+        android:layout_height="140dp"
         android:src="@drawable/book_open_svgrepo_com"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"

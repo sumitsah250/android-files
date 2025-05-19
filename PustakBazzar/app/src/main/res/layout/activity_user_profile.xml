@@ -40,6 +40,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/baseline_arrow_back_24"
+            android:tint="@color/black"
             android:backgroundTint="@color/white"
             />
 
@@ -120,7 +121,7 @@
             android:textColorHighlight="@color/cardview_dark_background"
           />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/btnlocation"

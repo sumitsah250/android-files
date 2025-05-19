@@ -31,7 +31,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/menu_alt_2_svgrepo_com"
-            android:backgroundTint="@color/white"
+
             />
 
         <EditText
@@ -49,15 +49,22 @@
     </LinearLayout>
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <!-- SwipeRefreshLayout wrapping RecyclerView -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintBottom_toTopOf="@id/buttonContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 <!--    <androidx.appcompat.widget.AppCompatButton-->
 <!--        android:id="@+id/btnUploadImage"-->
@@ -71,73 +78,108 @@
 <!--        app:layout_constraintStart_toStartOf="parent" />-->
 
     <LinearLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/buttonContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:padding="8dp"
         android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent">
 
-<!--        <ImageButton-->
-<!--            android:id="@+id/btnUploadImage"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@drawable/appcombat_button_background"-->
-<!--            android:padding="10dp"-->
-<!--            android:layout_margin="10dp"-->
-<!--            android:scaleType="centerInside"-->
-<!--            android:src="@drawable/button_sell_svgrepo_com"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:tint="@color/white">-->
+        android:background="@drawable/linearlayourbackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-<!--        </ImageButton>-->
-
-
-        <androidx.appcompat.widget.AppCompatButton
+        <!-- My Books Button -->
+        <LinearLayout
             android:id="@+id/appCompatMyBooks"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_width="0dp"
+            android:layout_height="58dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            android:gravity="center"
             android:background="@drawable/mybookbackground"
-            android:padding="16dp"
-            android:text="My Books"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:padding="8dp"
+            android:elevation="4dp"
+            android:clickable="true"
+            android:focusable="true">
 
-        <androidx.appcompat.widget.AppCompatButton
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/book_open_svgrepo_com"
+                app:tint="@color/white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Books"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+        <!-- Sell Button -->
+        <LinearLayout
             android:id="@+id/btnUploadImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_width="0dp"
+            android:layout_height="58dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            android:gravity="center"
             android:background="@drawable/sell_button_background"
-            android:padding="10dp"
-            android:scaleType="centerInside"
-            android:text="sell"
-            android:textColor="@color/white"
-            android:textSize="18dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/appCompatMyBooks"
-            app:tint="@color/white">
+            android:padding="8dp"
+            android:elevation="4dp"
+            android:clickable="true"
+            android:focusable="true">
 
-        </androidx.appcompat.widget.AppCompatButton>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/sell_svgrepo_com"
+                app:tint="@color/white"/>
 
-        <androidx.appcompat.widget.AppCompatButton
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sell"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+        <!-- Wishlist Button -->
+        <LinearLayout
             android:id="@+id/appCompatButtonWishList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_width="0dp"
+            android:layout_height="58dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
             android:background="@drawable/remaining_completed_background"
-            android:padding="16dp"
-            android:text="WishList"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnUploadImage" />
+            android:padding="8dp"
+            android:elevation="4dp"
+            android:clickable="true"
+            android:focusable="true">
 
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/heart_svgrepo_com" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wishlist"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textAllCaps="false" />
+        </LinearLayout>
 
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

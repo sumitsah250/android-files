@@ -34,9 +34,9 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="10dp"
-            android:background="@color/white"
             android:padding="10dp"
             android:scaleType="centerInside"
+            android:background="@android:color/transparent"
             android:src="@drawable/heart_alt_svgrepo_com"
             app:layout_constraintBottom_toBottomOf="@+id/btnback"
             app:layout_constraintEnd_toEndOf="parent"
@@ -79,38 +79,62 @@
             android:layout_height="wrap_content"
             android:text="Author: Author Name"
             android:textSize="14sp"
+
             android:textColor="#555555"
             app:layout_constraintTop_toBottomOf="@id/textTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="4dp" />
+            android:layout_marginTop="8dp" />
 
-        <!-- Price -->
-        <TextView
-            android:id="@+id/textPrice"
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Price: ₹100"
-            android:textColor="#444444"
-            android:textStyle="bold"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/textAuthor"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/textAuthor"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="4dp" />
+            app:layout_constraintTop_toBottomOf="@+id/textAuthor">
+
+            <!-- Discounted/New Price -->
+            <TextView
+                android:id="@+id/textDiscountedPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:text="Rs.500"
+                android:textColor="#48F051"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Original Price -->
+            <TextView
+                android:id="@+id/textOriginalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Rs.800"
+                android:textColor="#A9A9A9"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/textDiscountedPrice"
+                app:layout_constraintTop_toTopOf="@+id/textDiscountedPrice" />
+
+            <!-- Line cutting through the Original Price -->
+            <View
+                android:id="@+id/viewStrike"
+                android:layout_width="0dp"
+                android:layout_height="0.7dp"
+                android:background="@color/light_gray"
+                app:layout_constraintBottom_toBottomOf="@+id/textOriginalPrice"
+                app:layout_constraintEnd_toEndOf="@+id/textOriginalPrice"
+                app:layout_constraintStart_toStartOf="@+id/textOriginalPrice"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <!-- Description -->
-        <TextView
-            android:id="@+id/textDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="This is a great book on Android development."
-            android:textColor="#666666"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/textPrice"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp" />
 
 
         <androidx.appcompat.widget.AppCompatButton
@@ -127,6 +151,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/textDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="This is a great book on Android development."
+            android:textColor="#666666"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

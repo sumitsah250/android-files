@@ -29,7 +29,7 @@ import android.view.Gravity;
 
 public class BookDetailsActivity extends AppCompatActivity {
     private ImageView imgBook;
-    private TextView textTitle, textAuthor, textPrice, textDescription;
+    private TextView textTitle, textAuthor, textPrice, textDescription,txtDiscountedPrice;
     private Button btnContactSeller;
     ImageButton btnback,btnheart;
 
@@ -48,7 +48,9 @@ public class BookDetailsActivity extends AppCompatActivity {
         imgBook = findViewById(R.id.imgBook);
         textTitle = findViewById(R.id.textTitle);
         textAuthor = findViewById(R.id.textAuthor);
-        textPrice = findViewById(R.id.textPrice);
+        textPrice = findViewById(R.id.textOriginalPrice);
+        txtDiscountedPrice=findViewById(R.id.textDiscountedPrice);
+
         textDescription = findViewById(R.id.textDescription);
         btnback = findViewById(R.id.btnback);
         btnheart = findViewById(R.id.btnheart);
@@ -110,6 +112,7 @@ public class BookDetailsActivity extends AppCompatActivity {
                         String title = documentSnapshot.getString("title");
                         String author = documentSnapshot.getString("author");
                         String price = documentSnapshot.getString("price");
+                        String discountedprice = documentSnapshot.getString("discountedprice");
                         String description = documentSnapshot.getString("description");
                         String imageUrl = documentSnapshot.getString("imageUrl");
                         sellerEmail = documentSnapshot.getString("sellerEmail");
@@ -118,8 +121,9 @@ public class BookDetailsActivity extends AppCompatActivity {
 
                         textTitle.setText(title);
                         textAuthor.setText("Author: " + author);
-                        textPrice.setText("Price: Rs." + price);
+                        textPrice.setText("Rs." + price);
                         textDescription.setText(description);
+                        txtDiscountedPrice.setText("Rs."+discountedprice);
 
                         // Load book image with progress dialog
                         loadImageWithProgress(imageUrl);

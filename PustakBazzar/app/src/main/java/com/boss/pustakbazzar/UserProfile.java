@@ -44,7 +44,8 @@ import android.Manifest;
 public class UserProfile extends AppCompatActivity {
 
     private EditText etName,edtContact;
-    private AppCompatButton btnSave, btnLocation;
+    private AppCompatButton btnSave;
+    private EditText btnLocation;
     private FloatingActionButton  btnback;
     private CircleImageView profilePic;
     private FirebaseAuth auth;
@@ -104,7 +105,7 @@ public class UserProfile extends AppCompatActivity {
 
         loadUserProfile();
 
-        btnLocation.setOnClickListener(v -> fetchCurrentLocation());
+//        btnLocation.setOnClickListener(v -> fetchCurrentLocation());
 
         changeImage.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_PICK);
@@ -172,6 +173,15 @@ public class UserProfile extends AppCompatActivity {
             newContact="98xxxxxxxx";
             return;
         }
+        // Remove "Lat: " and "Lon: " using split and trim
+        String locationText = btnLocation.getText().toString();
+        String[] parts = locationText.split(",");
+        String latPart = parts[0].trim().replace("Lat:", "").trim();
+        String lonPart = parts[1].trim().replace("Lon:", "").trim();
+
+        updatedLatitude = Double.parseDouble(latPart);
+        updatedLongitude = Double.parseDouble(lonPart);
+
 
         progressDialog.show();
 

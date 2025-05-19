@@ -47,19 +47,50 @@
             app:layout_constraintTop_toBottomOf="@+id/imgBook"
             app:layout_marginBaseline="8dp" />
 
-        <TextView
-            android:id="@+id/textPrice"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:layout_marginLeft="8dp"
-            android:padding="5dp"
-            android:text="Rs 500"
-            android:textColor="#48F051"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/textTitle">
+
+            <!-- Discounted/New Price -->
+            <TextView
+                android:id="@+id/textDiscountedPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Rs.500"
+                android:textColor="#48F051"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Original Price -->
+            <TextView
+                android:id="@+id/textOriginalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Rs.800"
+                android:textColor="#A9A9A9"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textDiscountedPrice"
+                app:layout_constraintStart_toEndOf="@+id/textDiscountedPrice"
+                app:layout_constraintTop_toTopOf="@+id/textDiscountedPrice" />
+
+            <!-- Line cutting through the Original Price -->
+            <View
+                android:id="@+id/viewStrike"
+                android:layout_width="0dp"
+                android:layout_height="0.7dp"
+                android:background="@color/light_gray"
+                app:layout_constraintBottom_toBottomOf="@+id/textOriginalPrice"
+                app:layout_constraintEnd_toEndOf="@+id/textOriginalPrice"
+                app:layout_constraintStart_toStartOf="@+id/textOriginalPrice"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <TextView
             android:id="@+id/textDistance"
@@ -72,7 +103,7 @@
 
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textPrice" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
         <ProgressBar
             android:id="@+id/progressbar"

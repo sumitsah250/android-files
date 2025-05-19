@@ -2,6 +2,7 @@ package com.boss.pustakbazzar;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
 import java.util.Collections;
@@ -41,6 +44,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         Book book = bookList.get(position);
         holder.textTitle.setText(book.getTitle());
         holder.textPrice.setText("Rs." + book.getPrice());
+        holder.txtdiscountedprice.setText("Rs."+book.getDiscountedPrice());
+
         Picasso.get().load(book.getImageUrl()).into(holder.imgBook);
 
         // Display distance (already calculated and set before passing to adapter)
@@ -64,14 +69,15 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     }
 
     public static class BookViewHolder extends RecyclerView.ViewHolder {
-        TextView textTitle, textPrice, textDistance;
+        TextView textTitle, textPrice, textDistance,txtdiscountedprice;
         ImageView imgBook;
 
         public BookViewHolder(@NonNull View itemView) {
             super(itemView);
             textTitle = itemView.findViewById(R.id.textTitle);
-            textPrice = itemView.findViewById(R.id.textPrice);
+            textPrice = itemView.findViewById(R.id.textOriginalPrice);
             textDistance = itemView.findViewById(R.id.textDistance);
+            txtdiscountedprice=itemView.findViewById(R.id.textDiscountedPrice);
             imgBook = itemView.findViewById(R.id.imgBook);
         }
     }
@@ -95,15 +101,39 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
 
     // Delete book from Firestore
     private void deleteBook(String bookId, int position) {
-        com.google.firebase.firestore.FirebaseFirestore.getInstance()
+        String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        FirebaseFirestore.getInstance()
                 .collection("books")
                 .document(bookId)
-                .delete()
-                .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(context, "Book deleted successfully", Toast.LENGTH_SHORT).show();
-                    bookList.remove(position);
-                    notifyItemRemoved(position);
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        String bookUserId = documentSnapshot.getString("userId");
+
+                        Log.d("DeleteDebug", "Book userId: " + bookUserId);
+                        Log.d("DeleteDebug", "Current userId: " + currentUserId);
+
+                        if (bookUserId != null && currentUserId.trim().equalsIgnoreCase(bookUserId.trim())) {
+                            FirebaseFirestore.getInstance()
+                                    .collection("books")
+                                    .document(bookId)
+                                    .delete()
+                                    .addOnSuccessListener(aVoid -> {
+                                        Toast.makeText(context, "Book deleted successfully", Toast.LENGTH_SHORT).show();
+                                        bookList.remove(position);
+                                        notifyItemRemoved(position);
+                                    })
+                                    .addOnFailureListener(e ->
+                                            Toast.makeText(context, "Failed to delete book", Toast.LENGTH_SHORT).show());
+                        } else {
+                            Toast.makeText(context, "You are not authorized to delete this book", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(context, "Book not found", Toast.LENGTH_SHORT).show();
+                    }
                 })
-                .addOnFailureListener(e -> Toast.makeText(context, "Failed to delete book", Toast.LENGTH_SHORT).show());
+                .addOnFailureListener(e ->
+                        Toast.makeText(context, "Error fetching book info", Toast.LENGTH_SHORT).show());
     }
 }

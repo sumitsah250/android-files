@@ -32,7 +32,7 @@ import java.util.Map;
 import java.util.UUID;
 
 public class UploadBookActivity extends AppCompatActivity {
-    private EditText etBookTitle, etBookAuthor, etBookPrice, etBookDescription;
+    private EditText etBookTitle, etBookAuthor, etBookPrice, etBookDescription,etDiscountedPrice;
     private Button btnUploadImage, btnSubmitBook;
     private ImageView imgBookPreview;
     private FirebaseFirestore db;
@@ -57,6 +57,7 @@ public class UploadBookActivity extends AppCompatActivity {
         btnUploadImage = findViewById(R.id.btnUploadImage);
         imgBookPreview = findViewById(R.id.imgBookPreview);
         btnSubmitBook = findViewById(R.id.btnSubmitBook);
+        etDiscountedPrice=findViewById(R.id.etDiscountedBookPrice);
 
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
@@ -113,8 +114,9 @@ public class UploadBookActivity extends AppCompatActivity {
         String author = etBookAuthor.getText().toString().trim();
         String price = etBookPrice.getText().toString().trim();
         String description = etBookDescription.getText().toString().trim();
+        String discountedprice=etDiscountedPrice.getText().toString().trim();
 
-        if (title.isEmpty() || author.isEmpty() || price.isEmpty() || description.isEmpty() || imageUri == null) {
+        if (title.isEmpty() || author.isEmpty() || price.isEmpty() || description.isEmpty() || imageUri == null || discountedprice.isEmpty()) {
             Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -123,10 +125,10 @@ public class UploadBookActivity extends AppCompatActivity {
         btnSubmitBook.setEnabled(false); // Prevent multiple clicks
 
         String bookId = UUID.randomUUID().toString();
-        compressAndUploadImage(bookId, title, author, price, description);
+        compressAndUploadImage(bookId, title, author, price, description,discountedprice);
     }
 
-    private void compressAndUploadImage(String bookId, String title, String author, String price, String description) {
+    private void compressAndUploadImage(String bookId, String title, String author, String price, String description,String DiscountedPrice) {
         try {
             InputStream inputStream = getContentResolver().openInputStream(imageUri);
             Bitmap originalBitmap = BitmapFactory.decodeStream(inputStream);
@@ -144,6 +146,7 @@ public class UploadBookActivity extends AppCompatActivity {
                                 book.put("title", title);
                                 book.put("author", author);
                                 book.put("price", price);
+                                book.put("discountedprice",DiscountedPrice);
                                 book.put("description", description);
                                 book.put("imageUrl", uri.toString());
                                 book.put("sellerEmail", auth.getCurrentUser().getEmail());

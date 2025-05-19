@@ -23,6 +23,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.boss.pustakbazzar.databinding.ActivityMainBinding;
 import com.boss.pustakbazzar.databinding.MainActivityContentBinding;
@@ -170,6 +171,13 @@ public class MainActivity extends AppCompatActivity {
         binding.btnUploadImage.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, UploadBookActivity.class);
             startActivity(intent);
+        });
+        binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                startActivity(new Intent(MainActivity.this,MainActivity.class));
+                finish();
+            }
         });
 
         binding.searchBox.addTextChangedListener(new TextWatcher() {
