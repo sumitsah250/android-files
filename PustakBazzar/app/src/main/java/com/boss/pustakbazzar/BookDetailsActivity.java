@@ -2,6 +2,7 @@ package com.boss.pustakbazzar;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -162,27 +164,28 @@ public class BookDetailsActivity extends AppCompatActivity {
 
     // Method to contact the seller via email
     private void contactSeller() {
-        Intent intent = new Intent(BookDetailsActivity.this, SellerDetails.class);
-        intent.putExtra("userid", userid); // send string
+        // Create a dialog
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_confirm_contact); // We'll create this layout next
+        dialog.setCancelable(true);
 
-        startActivity(intent);
+        TextView txtMessage = dialog.findViewById(R.id.txtMessage);
+        Button btnOpen = dialog.findViewById(R.id.btnOpen);
+        Button btnCancel = dialog.findViewById(R.id.btnCancel);
 
+        txtMessage.setText("Don't negotiate on price");
 
+        btnOpen.setOnClickListener(v -> {
+            dialog.dismiss();
+            Intent intent = new Intent(BookDetailsActivity.this, SellerDetails.class);
+            intent.putExtra("userid", userid);
+            startActivity(intent);
+        });
 
-//        if (sellerEmail != null) {
-//            Intent emailIntent = new Intent(Intent.ACTION_SEND);
-//            emailIntent.setType("message/rfc822");
-//            emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{sellerEmail});
-//            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Inquiry about your book");
-//            emailIntent.putExtra(Intent.EXTRA_TEXT, "Hello, I'm interested in buying your book. Please let me know the details.");
-//            try {
-//                startActivity(Intent.createChooser(emailIntent, "Send Email"));
-//            } catch (android.content.ActivityNotFoundException ex) {
-//                Toast.makeText(this, "No email client installed.", Toast.LENGTH_SHORT).show();
-//            }
-//        } else {
-//            Toast.makeText(this, "Seller contact unavailable!", Toast.LENGTH_SHORT).show();
-//        }
+        btnCancel.setOnClickListener(v -> dialog.dismiss());
+
+        dialog.show();
     }
 
     // Initialize Progress Dialog

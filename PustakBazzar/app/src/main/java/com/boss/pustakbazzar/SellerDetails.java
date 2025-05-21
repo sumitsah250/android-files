@@ -51,6 +51,7 @@ public class SellerDetails extends AppCompatActivity {
     private Uri imageUri;
     private double updatedLatitude = 0.0, updatedLongitude = 0.0;
     private String userId;
+    ProgressDialog progressDialog;
 
 
     private final ActivityResultLauncher<Intent> imagePickerLauncher =
@@ -78,6 +79,7 @@ public class SellerDetails extends AppCompatActivity {
         btnback=findViewById(R.id.btnback);
         btnContact=findViewById(R.id.btncontact);
         btnEmail=findViewById(R.id.btnEmail);
+        progressDialog = new ProgressDialog(this);
 
         profilePic = findViewById(R.id.edit_profile_pic);
 
@@ -105,8 +107,20 @@ public class SellerDetails extends AppCompatActivity {
     }
 
     private void loadUserProfile() {
+        // Initialize and show progress dialog
+        progressDialog.setMessage("Loading profile...");
+        progressDialog.setCancelable(true); // Let user cancel it
+        progressDialog.setOnCancelListener(dialog -> {
+            Toast.makeText(this, "Cancelled. Closing profile...", Toast.LENGTH_SHORT).show();
+            finish(); // Close the activity if user cancels
+        });
+        progressDialog.show();
+
+        // Fetch Firestore data
         db.collection("users").document(userId).get()
                 .addOnSuccessListener(documentSnapshot -> {
+                    if (progressDialog.isShowing()) progressDialog.dismiss();
+
                     if (documentSnapshot.exists()) {
                         btnName.setText(documentSnapshot.getString("name"));
                         btnContact.setText(documentSnapshot.getString("ContactNumber"));
@@ -121,6 +135,10 @@ public class SellerDetails extends AppCompatActivity {
                             Glide.with(this).load(imageUrl).into(profilePic);
                         }
                     }
+                })
+                .addOnFailureListener(e -> {
+                    if (progressDialog.isShowing()) progressDialog.dismiss();
+                    Toast.makeText(this, "Failed to load profile", Toast.LENGTH_SHORT).show();
                 });
     }
 

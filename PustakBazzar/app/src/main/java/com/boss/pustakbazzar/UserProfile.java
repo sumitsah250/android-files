@@ -123,12 +123,25 @@ public class UserProfile extends AppCompatActivity {
     }
 
     private void loadUserProfile() {
+        progressDialog.setMessage("Loading profile...");
+        progressDialog.setCancelable(true); // Allow user to cancel with back button
+
+        // If the user cancels the dialog, finish the activity
+        progressDialog.setOnCancelListener(dialog -> {
+            Toast.makeText(this, "Cancelled. Closing profile...", Toast.LENGTH_SHORT).show();
+            finish(); // Closes the current activity
+        });
+
+        progressDialog.show();
+
         db.collection("users").document(userId).get()
                 .addOnSuccessListener(documentSnapshot -> {
+                    if (progressDialog.isShowing()) progressDialog.dismiss();
+
                     if (documentSnapshot.exists()) {
                         etName.setText(documentSnapshot.getString("name"));
                         edtContact.setText(documentSnapshot.getString("ContactNumber"));
-                        newContact=documentSnapshot.getString("ContactNumber");
+                        newContact = documentSnapshot.getString("ContactNumber");
                         updatedLatitude = documentSnapshot.getDouble("latitude");
                         updatedLongitude = documentSnapshot.getDouble("longitude");
 
@@ -139,6 +152,10 @@ public class UserProfile extends AppCompatActivity {
                             Glide.with(this).load(imageUrl).into(profilePic);
                         }
                     }
+                })
+                .addOnFailureListener(e -> {
+                    if (progressDialog.isShowing()) progressDialog.dismiss();
+                    Toast.makeText(this, "Failed to load profile", Toast.LENGTH_SHORT).show();
                 });
     }
 
@@ -197,26 +214,38 @@ public class UserProfile extends AppCompatActivity {
             // Step 1: Get bitmap from URI
             Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
 
-            // Step 2: Compress the bitmap to JPEG format
+            // Step 2: Convert and compress to JPEG format only
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 40, baos); // 50 = medium compression
+            boolean isCompressed = bitmap.compress(Bitmap.CompressFormat.JPEG, 35, baos);
+
+            if (!isCompressed) {
+                Toast.makeText(this, "Image compression failed!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             byte[] compressedData = baos.toByteArray();
 
-            // Step 3: Upload to Firebase Storage
+            // Step 3: Define storage path with .jpg extension
             StorageReference imageRef = storage.getReference().child("profileImages/" + userId + ".jpg");
+
+            // Step 4: Upload the JPEG data
             UploadTask uploadTask = imageRef.putBytes(compressedData);
 
             uploadTask.addOnSuccessListener(taskSnapshot ->
                     imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
                         updateFirestore(name, uri.toString(), newContact);
                     })
-            ).addOnFailureListener(e ->
-                    Toast.makeText(this, "Failed to upload image!", Toast.LENGTH_SHORT).show()
+            ).addOnFailureListener(e ->{
+                Toast.makeText(this, "Failed to upload image!", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                    }
+
             );
 
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(this, "Image compression failed!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Image processing error!", Toast.LENGTH_SHORT).show();
+            progressDialog.dismiss();
         }
     }
 

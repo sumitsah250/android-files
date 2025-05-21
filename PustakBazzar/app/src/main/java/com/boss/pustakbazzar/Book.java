@@ -5,6 +5,15 @@ import java.util.Date;
 public class Book {
     private String id, title, author, price, imageUrl, userId,discountedprice;
     private double distance; // Distance to the current user
+    private double latitude;
+    private double longitude;
+
+    public double getLatitude() { return latitude; }
+    public void setLatitude(double latitude) { this.latitude = latitude; }
+
+    public double getLongitude() { return longitude; }
+    public void setLongitude(double longitude) { this.longitude = longitude; }
+
 
     public String getDiscountedPrice() {
         return discountedprice;

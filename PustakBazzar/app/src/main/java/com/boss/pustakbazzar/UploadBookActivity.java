@@ -128,59 +128,97 @@ public class UploadBookActivity extends AppCompatActivity {
         compressAndUploadImage(bookId, title, author, price, description,discountedprice);
     }
 
-    private void compressAndUploadImage(String bookId, String title, String author, String price, String description,String DiscountedPrice) {
+    private void compressAndUploadImage(String bookId, String title, String author, String price, String description, String DiscountedPrice) {
         try {
+            String mimeType = getContentResolver().getType(imageUri);
+            if (mimeType == null || !mimeType.equals("image/jpeg")) {
+                Toast.makeText(this, "Please select a JPEG image only!", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                btnSubmitBook.setEnabled(true);
+                return;
+            }
+
             InputStream inputStream = getContentResolver().openInputStream(imageUri);
             Bitmap originalBitmap = BitmapFactory.decodeStream(inputStream);
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            originalBitmap.compress(Bitmap.CompressFormat.JPEG, 40, baos); // Compress to 50% quality
+            boolean isCompressed = originalBitmap.compress(Bitmap.CompressFormat.JPEG, 30, baos);
+            if (!isCompressed) {
+                Toast.makeText(this, "Image compression failed!", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                btnSubmitBook.setEnabled(true);
+                return;
+            }
+
             byte[] compressedData = baos.toByteArray();
 
-            StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("book_images").child(bookId);
+            StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("book_images").child(bookId + ".jpg");
             storageRef.putBytes(compressedData)
                     .addOnSuccessListener(taskSnapshot -> storageRef.getDownloadUrl()
                             .addOnSuccessListener(uri -> {
-                                Map<String, Object> book = new HashMap<>();
-                                book.put("id", bookId);
-                                book.put("title", title);
-                                book.put("author", author);
-                                book.put("price", price);
-                                book.put("discountedprice",DiscountedPrice);
-                                book.put("description", description);
-                                book.put("imageUrl", uri.toString());
-                                book.put("sellerEmail", auth.getCurrentUser().getEmail());
-                                book.put("userId", userId);
+                                // 🔽 Step: Get Seller Location
+                                db.collection("users").document(userId).get().addOnSuccessListener(userDoc -> {
+                                    if (userDoc.exists()) {
+                                        Double latitude = userDoc.getDouble("latitude");
+                                        Double longitude = userDoc.getDouble("longitude");
 
-                                db.collection("books").document(bookId)
-                                        .set(book)
-                                        .addOnSuccessListener(aVoid -> {
-                                            progressDialog.dismiss(); // Hide progress dialog
-                                            btnSubmitBook.setEnabled(true); // Re-enable button
-                                            Intent intent = new Intent(UploadBookActivity.this, MainActivity.class);
-                                            intent.putExtra("bookId", bookId);
-                                            startActivity(intent);
-                                            Toast.makeText(UploadBookActivity.this, "Book uploaded successfully", Toast.LENGTH_SHORT).show();
-                                            finish();
-                                        })
-                                        .addOnFailureListener(e -> {
+                                        if (latitude != null && longitude != null) {
+                                            Map<String, Object> book = new HashMap<>();
+                                            book.put("id", bookId);
+                                            book.put("title", title);
+                                            book.put("author", author);
+                                            book.put("price", price);
+                                            book.put("discountedprice", DiscountedPrice);
+                                            book.put("description", description);
+                                            book.put("imageUrl", uri.toString());
+                                            book.put("sellerEmail", auth.getCurrentUser().getEmail());
+                                            book.put("userId", userId);
+                                            book.put("latitude", latitude); // ✅ Add this
+                                            book.put("longitude", longitude); // ✅ And this
+
+                                            db.collection("books").document(bookId)
+                                                    .set(book)
+                                                    .addOnSuccessListener(aVoid -> {
+                                                        progressDialog.dismiss();
+                                                        btnSubmitBook.setEnabled(true);
+                                                        Intent intent = new Intent(UploadBookActivity.this, MainActivity.class);
+                                                        intent.putExtra("bookId", bookId);
+                                                        startActivity(intent);
+                                                        Toast.makeText(UploadBookActivity.this, "Book uploaded successfully", Toast.LENGTH_SHORT).show();
+                                                        finish();
+                                                    })
+                                                    .addOnFailureListener(e -> {
+                                                        progressDialog.dismiss();
+                                                        btnSubmitBook.setEnabled(true);
+                                                        Toast.makeText(this, "Failed to upload book", Toast.LENGTH_SHORT).show();
+                                                    });
+                                        } else {
                                             progressDialog.dismiss();
                                             btnSubmitBook.setEnabled(true);
-                                            Toast.makeText(this, "Failed to upload book", Toast.LENGTH_SHORT).show();
-                                        });
+                                            Toast.makeText(this, "User location not found", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }).addOnFailureListener(e -> {
+                                    progressDialog.dismiss();
+                                    btnSubmitBook.setEnabled(true);
+                                    Toast.makeText(this, "Failed to fetch user location", Toast.LENGTH_SHORT).show();
+                                });
                             }))
                     .addOnFailureListener(e -> {
                         progressDialog.dismiss();
                         btnSubmitBook.setEnabled(true);
                         Toast.makeText(this, "Image upload failed", Toast.LENGTH_SHORT).show();
                     });
+
         } catch (IOException e) {
             progressDialog.dismiss();
             btnSubmitBook.setEnabled(true);
             e.printStackTrace();
-            Toast.makeText(this, "Failed to compress image", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Failed to process image", Toast.LENGTH_SHORT).show();
         }
     }
+
+
 
     private void initProgressDialog() {
         progressDialog = new Dialog(this);
