@@ -2,7 +2,6 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.PustakBazzar" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-
     </style>
 
     <style name="Theme.PustakBazzar" parent="Base.Theme.PustakBazzar" />

@@ -23,6 +23,7 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -110,39 +111,59 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void registerUser() {
+        // Get user input
         String name = etName.getText().toString().trim();
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
 
+        // Validate input
         if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "All fields are required!", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        // Create user with email and password using Firebase
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener(authResult -> {
-                    String userId = auth.getCurrentUser().getUid();
+                    FirebaseUser currentUser = auth.getCurrentUser(); // Get the registered user
+                    if (currentUser != null) {
+                        // Send verification email to Gmail
+                        currentUser.sendEmailVerification()
+                                .addOnSuccessListener(aVoid -> {
+                                    // Only save user data if verification email sent successfully
+                                    String userId = currentUser.getUid();
 
-                    Map<String, Object> user = new HashMap<>();
-                    user.put("name", name);
-                    user.put("email", email);
-                    user.put("userId", userId);
-                    user.put("latitude", userLatitude);
-                    user.put("longitude", userLongitude);
-                    user.put("wishlist", new ArrayList<String>());
+                                    // Prepare user data to store in Firestore
+                                    Map<String, Object> user = new HashMap<>();
+                                    user.put("name", name);
+                                    user.put("email", email);
+                                    user.put("userId", userId);
+                                    user.put("latitude", userLatitude);
+                                    user.put("longitude", userLongitude);
+                                    user.put("wishlist", new ArrayList<String>());
 
-                    db.collection("users").document(userId).set(user)
-                            .addOnSuccessListener(aVoid -> {
-                                Toast.makeText(this, "Registration Successful!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(this, MainActivity.class));
-                                finish();
-                            })
-                            .addOnFailureListener(e ->
-                                    Toast.makeText(this, "Error saving data!", Toast.LENGTH_SHORT).show());
+                                    // Save user data to Firestore under "users" collection
+                                    db.collection("users").document(userId).set(user)
+                                            .addOnSuccessListener(unused -> {
+                                                Toast.makeText(this, "Verification email sent. Please check your inbox.", Toast.LENGTH_LONG).show();
+                                                auth.signOut(); // Sign out to prevent login before email verification
+                                                startActivity(new Intent(this, activity_login.class)); // Go to login screen
+                                                finish(); // Close current activity
+                                            })
+                                            .addOnFailureListener(e -> {
+                                                Toast.makeText(this, "Error saving user data.", Toast.LENGTH_SHORT).show();
+                                            });
+                                })
+                                .addOnFailureListener(e -> {
+                                    Toast.makeText(this, "Failed to send verification email.", Toast.LENGTH_SHORT).show();
+                                });
+                    }
                 })
-                .addOnFailureListener(e ->
-                        Toast.makeText(this, "Registration Failed!", Toast.LENGTH_SHORT).show());
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Registration failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
     }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode,

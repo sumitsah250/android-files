@@ -12,7 +12,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -66,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding1 = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding1.getRoot());
+
+
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();

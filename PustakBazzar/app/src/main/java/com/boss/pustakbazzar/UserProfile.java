@@ -190,14 +190,30 @@ public class UserProfile extends AppCompatActivity {
             newContact="98xxxxxxxx";
             return;
         }
-        // Remove "Lat: " and "Lon: " using split and trim
         String locationText = btnLocation.getText().toString();
-        String[] parts = locationText.split(",");
-        String latPart = parts[0].trim().replace("Lat:", "").trim();
-        String lonPart = parts[1].trim().replace("Lon:", "").trim();
 
-        updatedLatitude = Double.parseDouble(latPart);
-        updatedLongitude = Double.parseDouble(lonPart);
+        if (locationText.contains("Lat:") && locationText.contains("Lon:") && locationText.contains(",")) {
+            String[] parts = locationText.split(",");
+            if (parts.length == 2) {
+                try {
+                    String latPart = parts[0].trim().replace("Lat:", "").trim();
+                    String lonPart = parts[1].trim().replace("Lon:", "").trim();
+
+                    updatedLatitude = Double.parseDouble(latPart);
+                    updatedLongitude = Double.parseDouble(lonPart);
+
+                    // Use latitude and longitude
+                } catch (NumberFormatException e) {
+                    Toast.makeText(this, "Location values are not valid numbers", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "Location format is incorrect", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(this, "Location format is incorrect. Expected 'Lat: <value>, Lon: <value>'", Toast.LENGTH_SHORT).show();
+        }
+
+
 
 
         progressDialog.show();

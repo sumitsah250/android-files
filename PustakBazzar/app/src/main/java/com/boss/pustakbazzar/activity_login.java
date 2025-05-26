@@ -58,16 +58,28 @@ public class activity_login extends AppCompatActivity {
     }
 
     private void loginUser() {
-        String email = etEmail.getText().toString();
-        String password = etPassword.getText().toString();
+        String email = etEmail.getText().toString().trim();
+        String password = etPassword.getText().toString().trim();
+
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Please enter both email and password", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         auth.signInWithEmailAndPassword(email, password)
                 .addOnSuccessListener(authResult -> {
-                    startActivity(new Intent(this, MainActivity.class));
-                    finish(); // This finishes the login activity
+                    if (auth.getCurrentUser() != null && auth.getCurrentUser().isEmailVerified()) {
+                        // Email is verified, allow login
+                        startActivity(new Intent(this, MainActivity.class));
+                        finish();
+                    } else {
+                        // Email not verified
+                        Toast.makeText(this, "Please verify your email before logging in.", Toast.LENGTH_LONG).show();
+                        auth.signOut(); // Important: sign out if not verified
+                    }
                 })
                 .addOnFailureListener(e ->
-                        Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Login Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show()
                 );
     }
 }

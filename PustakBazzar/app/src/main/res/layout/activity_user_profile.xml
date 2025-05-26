@@ -115,6 +115,7 @@
             android:drawableLeft="@drawable/contact_svgrepo_com"
             android:drawablePadding="8dp"
             android:hint="Contact Number"
+            android:inputType="phone"
             android:padding="8dp"
             android:textColor="@color/black"
             android:layout_marginTop="20dp"
