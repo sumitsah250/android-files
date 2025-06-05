@@ -1,52 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:background="@color/black"
     android:id="@+id/header_inside"
-    android:layout_height="200dp">
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="@color/black"
+    android:padding="16dp">
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="20dp"
-        android:src="@drawable/edit_svgrepo_com"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </ImageView>
-
+    <!-- Profile Picture -->
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profileimage"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:src="@drawable/profile_round_1342_svgrepo_com"
         android:tint="@color/white"
-        app:civ_border_color="#1E88E5"
+        app:civ_border_color="#FFFFFF"
         app:civ_border_width="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.366">
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-    </de.hdodenhof.circleimageview.CircleImageView>
-
+    <!-- Username -->
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:textSize="32sp"
-        android:textColor="@color/white"
         android:id="@+id/username"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/profileimage"
-        app:layout_constraintStart_toStartOf="@+id/profileimage"
-        app:layout_constraintTop_toBottomOf="@+id/profileimage">
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Sumit Boss"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginStart="12dp"
+        app:layout_constraintStart_toEndOf="@+id/profileimage"
+        app:layout_constraintTop_toTopOf="@+id/profileimage"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    </TextView>
+    <!-- Gmail Text -->
+    <TextView
+        android:id="@+id/gmailText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="sumitboss@email.com"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:layout_marginStart="12dp"
+        app:layout_constraintStart_toEndOf="@id/profileimage"
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

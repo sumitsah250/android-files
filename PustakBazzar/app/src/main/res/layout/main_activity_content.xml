@@ -7,46 +7,47 @@
     android:padding="5dp"
    >
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/actionBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:background="@drawable/action_bar_background"
+        android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:padding="2dp"
-        android:gravity="center"
         app:layout_constraintTop_toTopOf="parent">
 
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <ImageView
             android:id="@+id/toggle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
             android:clickable="true"
-            android:layout_margin="4dp"
-            app:borderWidth="1dp"
+            android:contentDescription="Menu"
             android:padding="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/menu_alt_2_svgrepo_com"
-
-            />
+            app:srcCompat="@drawable/menu_alt_2_svgrepo_com" />
 
         <EditText
             android:id="@+id/searchBox"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/searchbox_background"
-            android:hint="    Search books..."
-            android:padding="4dp"
             android:drawableEnd="@drawable/search_alt_2_svgrepo_com"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-
-    </LinearLayout>
+            android:hint="Search books..."
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/toggle"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <!-- SwipeRefreshLayout wrapping RecyclerView -->
@@ -57,7 +58,8 @@
         app:layout_constraintBottom_toTopOf="@id/buttonContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@id/actionBarLayout"
+        android:background="@drawable/recycler_background"
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.recyclerview.widget.RecyclerView

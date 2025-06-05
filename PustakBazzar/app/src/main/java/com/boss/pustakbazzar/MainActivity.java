@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
@@ -63,12 +64,18 @@ public class MainActivity extends AppCompatActivity {
     View headerView;
     CircleImageView profileImage;
     TextView username;
+    TextView usergmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding1 = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding1.getRoot());
+
+        //to turn off dark mode
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        //to turn off the dark mode
+
 
 
 
@@ -81,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         headerView = binding1.navigationView.getHeaderView(0);
         profileImage = headerView.findViewById(R.id.profileimage);
         username = headerView.findViewById(R.id.username);
+        usergmail=headerView.findViewById(R.id.gmailText);
 
         loadUserProfile();
 
@@ -197,39 +205,56 @@ public class MainActivity extends AppCompatActivity {
                     bookList.clear();
                 }
 
+                List<Book> tempList = new ArrayList<>();
                 for (DocumentSnapshot doc : querySnapshot) {
                     Book book = doc.toObject(Book.class);
-                    bookList.add(book);
+                    tempList.add(book);
                 }
 
                 lastVisibleBook = querySnapshot.getDocuments().get(querySnapshot.size() - 1);
 
-                // Get current user's location to calculate distance and sort
+                // Get current user's location
                 db.collection("users").document(userId).get().addOnSuccessListener(userDoc -> {
                     if (userDoc.exists()) {
                         Double currentLat = userDoc.getDouble("latitude");
                         Double currentLng = userDoc.getDouble("longitude");
 
-                        if (currentLat != null && currentLng != null) {
-                            for (Book book : bookList) {
-                                Double sellerLat = book.getLatitude();
-                                Double sellerLng = book.getLongitude();
-                                if (sellerLat != null && sellerLng != null) {
-                                    double dist = calculateDistance(currentLat, currentLng, sellerLat, sellerLng);
-                                    book.setDistance(dist);
-                                } else {
-                                    book.setDistance(Double.MAX_VALUE);
+                        // Offload distance calculation and sorting to background thread
+                        new Thread(() -> {
+                            if (currentLat != null && currentLng != null) {
+                                for (Book book : tempList) {
+                                    Double sellerLat = book.getLatitude();
+                                    Double sellerLng = book.getLongitude();
+                                    if (sellerLat != null && sellerLng != null) {
+                                        double dist = calculateDistance(currentLat, currentLng, sellerLat, sellerLng);
+                                        book.setDistance(dist);
+                                    } else {
+                                        book.setDistance(Double.MAX_VALUE);
+                                    }
                                 }
+                                Collections.sort(tempList, Comparator.comparingDouble(Book::getDistance));
                             }
-                            Collections.sort(bookList, Comparator.comparingDouble(Book::getDistance));
-                        }
+
+                            // Update UI on main thread
+                            runOnUiThread(() -> {
+                                bookList.addAll(tempList);
+                                adapter.notifyDataSetChanged();
+                                isLoadingBooks = false;
+                            });
+                        }).start();
+
+                    } else {
+                        // Fallback if user location not found
+                        bookList.addAll(tempList);
+                        adapter.notifyDataSetChanged();
+                        isLoadingBooks = false;
                     }
-                    adapter.notifyDataSetChanged();
-                    isLoadingBooks = false;
                 }).addOnFailureListener(e -> {
+                    bookList.addAll(tempList);
                     adapter.notifyDataSetChanged();
                     isLoadingBooks = false;
                 });
+
             } else {
                 isLoadingBooks = false;
             }
@@ -288,11 +313,18 @@ public class MainActivity extends AppCompatActivity {
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
                         username.setText(documentSnapshot.getString("name"));
+                        usergmail.setText(documentSnapshot.getString("email"));
                         String imageUrl = documentSnapshot.getString("profileImage");
+
                         if (imageUrl != null && !imageUrl.isEmpty()) {
-                            Glide.with(this).load(imageUrl).into(profileImage);
+                            if (!isDestroyed() && !isFinishing()) { // Prevent crash
+                                Glide.with(this)
+                                        .load(imageUrl)
+                                        .into(profileImage);
+                            }
                         }
                     }
                 });
     }
+
 }
