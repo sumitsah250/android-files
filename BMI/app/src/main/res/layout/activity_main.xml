@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+     android:gravity="center"
+    android:id="@+id/backgroundmain"
+    android:background="#6003A9F4"
+    tools:context=".MainActivity"
+    >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:backgroundTint="#2B6593"
+        android:text="BMI CALCULATOR"
+        android:textStyle="bold"
+        android:textSize="25dp"
+
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:hint="@string/hint_wt"
+        android:id="@+id/edtweight"
+        android:inputType="number"
+        >
+    </EditText>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:hint="@string/hint_htf"
+        android:id="@+id/edtfheight"
+        android:inputType="number"
+
+        >
+
+    </EditText>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:hint="@string/hint_hti"
+        android:id="@+id/edtiheight"
+        android:inputType="number"
+        >
+
+    </EditText>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="calculate BMI"
+        android:layout_margin="12dp"
+        android:backgroundTint="#673AB7"
+        android:textStyle="bold"
+        android:textSize="21dp"
+        android:id="@+id/btncalculator">
+
+
+    </Button>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textResult"
+        android:text="@string/result"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textbmi"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        />
+
+
+</LinearLayout>

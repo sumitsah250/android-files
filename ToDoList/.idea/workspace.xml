@@ -1,28 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AndroidLayouts">
-    <shared>
-      <config />
-    </shared>
-  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="82cbf828-da6d-4b8f-aed5-5b2ea2dd91f5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../KuraaKaani/app/src/main/java/com/boss/modelclass/myUsers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../all_about_firebase/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../all_about_firebase/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../all_about_firebase/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../all_about_firebase/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../all_about_firebase/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../all_about_firebase/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../all_about_firebase/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../all_about_firebase/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../all_about_firebase/app/src/main/java/com/example/all_about_firebase/facedetection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../all_about_firebase/app/src/main/java/com/example/all_about_firebase/loginactivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../all_about_firebase/app/src/main/java/com/example/all_about_firebase/loginactivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../all_about_firebase/app/src/main/res/layout/activity_facedetection.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../all_about_firebase/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../all_about_firebase/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../all_about_firebase/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/../all_about_firebase/gradle/libs.versions.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../all_about_firebase/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../all_about_firebase/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../whatsapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../whatsapp/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="0b0297db-e1b7-4622-b94a-be1f3bc3ea6d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../To_Do_List.2.0" beforeDir="false" afterPath="$PROJECT_DIR$/../To_Do_List.2.0" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,89 +15,46 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\sumit\.android\avd\Pixel_7_Pro_API_31.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[379964a6]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="layoutResourceFile" />
-        <option value="resourceFile" />
-        <option value="Class" />
-      </list>
-    </option>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="f3efb21d-0987-47f8-9b73-b9feeff755d1" />
-        <option name="url" value="https://github.com/sumitsah250/android-files.git" />
-      </UrlAndAccount>
-    </option>
-  </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 3
+  &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="2a6Ncq9nFi76xVOMuBsPvXQuQet" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="1" id="Add" />
-  </component>
+  <component name="ProjectId" id="2hze70nFxKIbkoot8bK0K8C29mh" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/my android files(very improtant)/git-files/ToDoList&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sumit/OneDrive/Desktop/git_projectfiles/ToDoList&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\sumit\Desktop\android files\ToDoList\app\src\main\res\layout" />
-    </key>
-    <key name="android.template.1363958258">
-      <recent name="com.example.todolist" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="android.template.416289946">
-      <recent name="com.example.todolist" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.example.todolist" />
-      <recent name="" />
-    </key>
-  </component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="To_Do_List.app.main" />
@@ -129,10 +69,9 @@
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
-      <option name="RESTORE_ENABLED" value="false" />
-      <option name="RESTORE_FILE" value="" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
@@ -180,17 +119,19 @@
       <option name="ACTIVITY_CLASS" value="" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
-      <method v="2" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="82cbf828-da6d-4b8f-aed5-5b2ea2dd91f5" name="Changes" comment="" />
-      <created>1703635150723</created>
+      <changelist id="0b0297db-e1b7-4622-b94a-be1f3bc3ea6d" name="Changes" comment="" />
+      <created>1718601162419</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1703635150723</updated>
+      <updated>1718601162419</updated>
     </task>
     <servers />
   </component>

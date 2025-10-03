@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="58dp"
+        android:layout_marginRight="14dp"
+        android:id="@+id/txt"
+        android:text=":00"
+        android:textSize="54dp" />
+
+    <Chronometer
+        android:id="@+id/chronometer"
+        android:layout_width="202dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="58dp"
+        android:layout_marginRight="68dp"
+        android:textSize="54dp" />
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="202dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="187dp"
+        android:layout_marginRight="211dp"
+        android:onClick="startchronometer"
+        android:text="START"
+        android:textSize="34dp" />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="202dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="187dp"
+        android:layout_marginRight="2dp"
+        android:onClick="stopchronometer"
+        android:text="STOP"
+        android:textSize="34dp" />
+
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="202dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="264dp"
+        android:layout_marginRight="207dp"
+        android:onClick="resetchronometer"
+        android:text="RESET"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/btn4"
+        android:layout_width="202dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="264dp"
+        android:layout_marginRight="2dp"
+        android:onClick="Record"
+        android:text="RECORD"
+        android:textSize="30dp" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="373dp"
+        android:id="@+id/listview"
+
+        />
+
+
+</RelativeLayout>
